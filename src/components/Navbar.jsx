@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../assets/logo.png'
 
 const Navbar = () => {
     return (
@@ -27,7 +28,10 @@ const Navbar = () => {
                         <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/services'}>Services</Link></li>
                     </ul>
                 </div>
-                <a className="text-xl font-bold text-white">ServiceSphere</a>
+                <div className='flex items-center gap-2'>
+                <img className='w-11' src={logo} alt="" />
+                <a className="text-xl font-bold flex text-white">ServiceSphere</a>
+                </div>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
