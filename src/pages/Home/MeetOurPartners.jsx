@@ -28,7 +28,7 @@ const MeetOurPartners = () => {
     ];
 
     return (
-        <div className="py-16">
+        <div className="pt-16">
             <div className="container mx-auto text-center">
                 <h2 className="text-3xl font-semibold text-white mb-8">Meet Our Partners</h2>
 
