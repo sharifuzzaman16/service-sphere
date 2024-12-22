@@ -41,8 +41,8 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 <div className='flex gap-4 items-center'>
-                <a className="bg-[#007BFF] text-white px-4 py-2 rounded cursor-pointer">Login</a>
-                <a className="bg-gray-200 border-[#007BFF] border-2 text-[#007BFF] px-4 py-2 rounded cursor-pointer">Register</a>
+                <Link to={'/login'} className="bg-[#007BFF] text-white px-4 py-2 rounded cursor-pointer">Login</Link>
+                <Link to={'/register'} className="bg-gray-300 text-[#007BFF] px-4 py-2 rounded cursor-pointer">Register</Link>
                 </div>
             </div>
         </div>
