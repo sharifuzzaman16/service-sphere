@@ -4,6 +4,7 @@ import { FcGoogle } from 'react-icons/fc';
 
 const MeetOurPartners = () => {
 
+    // note: fake data created by ChatGPT
     const partners = [
         {
             name: "React",

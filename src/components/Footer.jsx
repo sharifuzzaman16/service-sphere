@@ -51,8 +51,6 @@ const Footer = () => {
                 <img className='w-16' src={logo} alt="" />
                 <p className="font-bold text-lg text-[#E0E0E0]">
                     Service Sphere
-                    <br />
-                    Providing reliable service reviews since 2000
                 </p>
                 <p className='text-[#E0E0E0]'>Copyright © {new Date().getFullYear()} - All right reserved</p>
             </aside>

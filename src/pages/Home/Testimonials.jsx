@@ -2,6 +2,7 @@ import React from 'react';
 
 const Testimonials = () => {
 
+    // note: fake data created by ChatGPT
     const testimonials = [
         {
           name: "John Doe",
