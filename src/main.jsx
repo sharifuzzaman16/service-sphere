@@ -1,0 +1,64 @@
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import MainLayout from './layout/MainLayout';
+import Home from './pages/Home';
+import NotFound from './pages/NotFound';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Services from './pages/Services';
+import MyReviews from './pages/MyReviews';
+import AddService from './pages/AddService';
+import ServiceDetails from './pages/ServiceDetails';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainLayout></MainLayout>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>
+      },
+      {
+        path: "/login",
+        element: <Login></Login>
+      },
+      {
+        path: "/register",
+        element: <Register></Register>
+      },
+      {
+        path: "/services",
+        element: <Services></Services>
+      },
+      {
+        path: "/my-reviews",
+        element: <MyReviews></MyReviews>
+      },
+      {
+        path: "/add-service",
+        element: <AddService></AddService>
+      },
+      {
+        path: "/services/details/:id",
+        element: <ServiceDetails></ServiceDetails>
+      },
+    ]
+
+  },
+  {
+    path: "*",
+    element: <NotFound></NotFound>
+  },
+]);
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <RouterProvider router={router} />
+  </StrictMode>,
+)
