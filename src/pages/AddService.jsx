@@ -3,7 +3,7 @@ import React from 'react';
 const AddService = () => {
     return (
         <div className="max-w-4xl my-16 mx-auto p-8 bg-[#2F3E46] shadow-md rounded-md">
-      <h1 className="text-2xl font-bold text-white mb-6">Add a New Service</h1>
+      <h1 className="text-2xl font-bold text-white text-center mb-6">Add a New Service</h1>
       <form className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-300 mb-2">Service Image</label>
