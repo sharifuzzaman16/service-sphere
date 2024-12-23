@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
 import Swal from 'sweetalert2';
+import { FcGoogle } from 'react-icons/fc';
 
 const Register = () => {
 
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const { createUser, updateUserProfile, signInWithGoogle } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -29,6 +31,7 @@ const Register = () => {
                             timer: 1500,
                         });
                         form.reset();
+                        navigate('/');
                     })
                     .catch((err) => {
                         console.log(err)
@@ -53,6 +56,31 @@ const Register = () => {
 
 
     };
+
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+            .then((result) => {
+                console.log(result.user)
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Registration successful!",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+                navigate('/');
+            })
+            .catch((err) => {
+                console.log(err.massage)
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "Failed to Register!",
+                    text: err.message,
+                    showConfirmButton: true,
+                });
+            })
+    }
 
 
     return (
@@ -111,9 +139,10 @@ const Register = () => {
                 </form>
 
                 <button
-                    className="w-full bg-red-600 text-white py-2 rounded-lg mb-4"
+                    onClick={handleGoogleSignIn}
+                    className="w-full bg-red-600 text-white py-2 rounded-lg mb-4 flex items-center justify-center gap-2"
                 >
-                    Register with Google
+                    <FcGoogle className='text-2xl'></FcGoogle> Register with Google
                 </button>
 
                 <div className="text-center">

@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
 import Swal from 'sweetalert2';
+import { FcGoogle } from 'react-icons/fc';
 
 const Login = () => {
 
-    const { loginUser } = useContext(AuthContext);
+    const { loginUser, signInWithGoogle } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleLogIn = (e) => {
         e.preventDefault();
@@ -27,6 +29,30 @@ const Login = () => {
             })
             .catch((err) => {
                 console.log(err)
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "Failed to Login!",
+                    text: err.message,
+                    showConfirmButton: true,
+                });
+            })
+    }
+
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+            .then((result) => {
+                console.log(result.user)
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Login successful!",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+            })
+            .catch((err) => {
+                console.log(err.massage)
                 Swal.fire({
                     position: "center",
                     icon: "error",
@@ -73,9 +99,10 @@ const Login = () => {
                 </form>
 
                 <button
-                    className="w-full bg-red-600 text-white py-2 rounded-lg mb-4"
+                    onClick={handleGoogleSignIn}
+                    className="w-full bg-red-600 text-white py-2 rounded-lg mb-4 flex items-center justify-center gap-2"
                 >
-                    Login with Google
+                    <FcGoogle className='text-2xl'></FcGoogle> Login with Google
                 </button>
 
                 <div className="text-center">
