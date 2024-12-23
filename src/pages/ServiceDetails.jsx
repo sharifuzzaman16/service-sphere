@@ -1,45 +1,96 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../context/AuthProvider';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const ServiceDetails = () => {
 
+    const { user } = useContext(AuthContext);
     const service = useLoaderData();
     console.log(service)
 
+    const handleReviewSubmit = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const reviewText = form.review.value;
+        const rating = form.rating.value;
+        const userName = user.displayName;
+        const userEmail = user.email;
+        const userPhoto = user.photoURL;
+        const reviewDate = new Date().toISOString();
+        const serviceId = service._id;
 
-        const reviews = [
-            {
-              id: 1,
-              serviceId: 1,
-              serviceTitle: 'Web Design Service',
-              text: 'Amazing design! The team was very professional and delivered on time.',
-              rating: 5,
-              userName: 'John Doe',
-              userPhoto: 'https://via.placeholder.com/50',
-              date: '2024-12-23',
-            },
-            {
-              id: 2,
-              serviceId: 2,
-              serviceTitle: 'Graphic Design Service',
-              text: 'Great work! They really understood what I needed for my brand.',
-              rating: 4,
-              userName: 'Jane Smith',
-              userPhoto: 'https://via.placeholder.com/50',
-              date: '2024-12-22',
-            },
-            {
-              id: 3,
-              serviceId: 3,
-              serviceTitle: 'SEO Optimization',
-              text: 'My website traffic has increased significantly. Thank you!',
-              rating: 5,
-              userName: 'Emily Brown',
-              userPhoto: 'https://via.placeholder.com/50',
-              date: '2024-12-21',
-            },
-          ];
-          
+        const review = {
+            reviewText,
+            rating,
+            userName,
+            userEmail,
+            userPhoto,
+            reviewDate,
+            serviceId
+        }
+
+        axios.post('http://localhost:5000/services/reviews', review)
+            .then(res => {
+                console.log(res.data)
+                if (res.data.insertedId) {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Review added successfully!",
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                    form.reset();
+                }
+            })
+            .catch(err => {
+                console.log(err)
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "Failed to add review!",
+                    text: err.message,
+                    showConfirmButton: true,
+                });
+            })
+    }
+
+
+    const reviews = [
+        {
+            id: 1,
+            serviceId: 1,
+            serviceTitle: 'Web Design Service',
+            text: 'Amazing design! The team was very professional and delivered on time.',
+            rating: 5,
+            userName: 'John Doe',
+            userPhoto: 'https://via.placeholder.com/50',
+            date: '2024-12-23',
+        },
+        {
+            id: 2,
+            serviceId: 2,
+            serviceTitle: 'Graphic Design Service',
+            text: 'Great work! They really understood what I needed for my brand.',
+            rating: 4,
+            userName: 'Jane Smith',
+            userPhoto: 'https://via.placeholder.com/50',
+            date: '2024-12-22',
+        },
+        {
+            id: 3,
+            serviceId: 3,
+            serviceTitle: 'SEO Optimization',
+            text: 'My website traffic has increased significantly. Thank you!',
+            rating: 5,
+            userName: 'Emily Brown',
+            userPhoto: 'https://via.placeholder.com/50',
+            date: '2024-12-21',
+        },
+    ];
+
 
     return (
         <div className="max-w-5xl mx-auto my-16">
@@ -98,19 +149,20 @@ const ServiceDetails = () => {
 
             <div className="mt-8 bg-[#2F3E46] p-6 shadow-md rounded-md">
                 <h3 className="text-lg font-bold mb-4">Add Your Review</h3>
-                <form className="space-y-4">
-                <textarea className="textarea textarea-bordered w-full" placeholder="Write your review"></textarea>
+                <form onSubmit={handleReviewSubmit} className="space-y-4">
+                    <textarea required name='review' className="textarea textarea-bordered w-full" placeholder="Write your review"></textarea>
                     <div>
                         <label className="block text-sm font-medium">Rating</label>
                         <input
+                            required
+                            name='rating'
                             type="number"
                             max={5}
                             min={1}
-                             className="input input-bordered w-full"
+                            className="input input-bordered w-full"
                         />
                     </div>
                     <button
-                        type="submit"
                         className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
                     >
                         Submit Review
