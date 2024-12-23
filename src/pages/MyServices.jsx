@@ -1,26 +1,22 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../context/AuthProvider';
 
 const MyServices = () => {
 
-    const services = [
-        {
-          id: 1,
-          image: 'https://via.placeholder.com/300x200',
-          title: 'Custom Logo Design',
-          category: 'Graphic Design',
-          price: 200,
-          userEmail: 'user1@example.com',
-        },
-        {
-          id: 2,
-          image: 'https://via.placeholder.com/300x200',
-          title: 'E-commerce Website Development',
-          category: 'Web Development',
-          price: 1200,
-          userEmail: 'user1@example.com',
-        },
-      ];
-      
+    const {user} = useContext(AuthContext);
+    const [services, setServices] = useState([]);
+
+    useEffect(() => {
+        axios.get(`http://localhost:5000/services/my-services?userEmail=${user.email}`)
+        .then(res => {
+            console.log(res.data)
+            setServices(res.data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }, [])
 
     return (
         <div className="max-w-7xl mx-auto my-16">
@@ -55,12 +51,12 @@ const MyServices = () => {
                         <tr key={index} className="border-t">
                             <td className="p-4">
                                 <img
-                                    src={service.image}
-                                    alt={service.title}
+                                    src={service.serviceImage}
+                                    alt={service.serviceTitle}
                                     className="w-16 h-16 object-cover rounded-md"
                                 />
                             </td>
-                            <td className="p-4">{service.title}</td>
+                            <td className="p-4">{service.serviceTitle}</td>
                             <td className="p-4">{service.category}</td>
                             <td className="p-4">${service.price}</td>
                             <td className="p-4 space-x-2">

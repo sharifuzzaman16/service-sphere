@@ -13,7 +13,7 @@ const MyReviews = () => {
         const fetchReviews = async () => {
             try {
                 const { data: reviewsData } = await axios.get(
-                    `http://localhost:5000/services/reviews/user?userEmail=${user.email}`
+                    `http://localhost:5000/services/reviews/my-reviews?userEmail=${user.email}`
                 );
 
                 const serviceDetailsPromises = reviewsData.map((review) =>
