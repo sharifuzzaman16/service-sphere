@@ -16,6 +16,8 @@ import AddService from './pages/AddService';
 import ServiceDetails from './pages/ServiceDetails';
 import AuthProvider from './context/AuthProvider';
 import MyServices from './pages/MyServices';
+import UpdateReview from './pages/UpdateReview';
+import UpdateService from './pages/UpdateService';
 
 const router = createBrowserRouter([
   {
@@ -43,12 +45,21 @@ const router = createBrowserRouter([
         element: <MyReviews></MyReviews>
       },
       {
+        path: "/my-reviews/update/:id",
+        element: <UpdateReview></UpdateReview>,
+        loader: ({params}) => fetch(`http://localhost:5000/service/reviews/details/${params.id}`)
+      },
+      {
         path: "/add-service",
         element: <AddService></AddService>
       },
       {
         path: "/my-services",
         element: <MyServices></MyServices>
+      },
+      {
+        path: "/my-services/update/:id",
+        element: <UpdateService></UpdateService>
       },
       {
         path: "/services/details/:id",
