@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../context/AuthProvider';
+import { Link } from 'react-router-dom';
 
 const MyServices = () => {
 
@@ -60,11 +61,13 @@ const MyServices = () => {
                             <td className="p-4">{service.category}</td>
                             <td className="p-4">${service.price}</td>
                             <td className="p-4 space-x-2">
+                                <Link to={`/my-services/update/${service._id}`}>
                                 <button
                                     className="bg-green-500 text-white px-4 py-1 rounded-md"
                                 >
                                     Edit
                                 </button>
+                                </Link>
                                 <button
                                     className="bg-red-500 text-white px-4 py-1 rounded-md"
                                 >
