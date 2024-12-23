@@ -28,9 +28,17 @@ const Register = () => {
                             showConfirmButton: false,
                             timer: 1500,
                         });
+                        form.reset();
                     })
                     .catch((err) => {
                         console.log(err)
+                        Swal.fire({
+                            position: "center",
+                            icon: "error",
+                            title: "Failed to update userdata!",
+                            text: err.message,
+                            showConfirmButton: true,
+                        });
                     })
             }).catch((err) => {
                 console.error("Registration error:", err.message);
