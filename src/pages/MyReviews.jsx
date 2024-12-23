@@ -37,9 +37,17 @@ const MyReviews = () => {
                             <p className="text-gray-300">{review.text}</p>
                             <p className="text-yellow-500">{'★'.repeat(review.rating)}</p>
                         </div>
-                        <div className="flex items-center gap-2">
-                        <MdEdit className='text-blue-500 text-2xl' />
-                        <MdDelete className='text-red-500 text-2xl' />
+                        <div className="space-x-2">
+                        <button
+                                    className="bg-green-500 text-white px-4 py-1 rounded-md"
+                                >
+                                    Edit
+                                </button>
+                                <button
+                                    className="bg-red-500 text-white px-4 py-1 rounded-md"
+                                >
+                                    Delete
+                                </button>
                         </div>
                     </div>
                 ))}
