@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
 import axios from 'axios';
@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 const ServiceDetails = () => {
 
     const { user } = useContext(AuthContext);
+    const [reviews, setReviews] = useState([]);
     const service = useLoaderData();
     console.log(service)
 
@@ -42,6 +43,8 @@ const ServiceDetails = () => {
                         showConfirmButton: false,
                         timer: 1500,
                     });
+                    setReviews(prevReviews => [{ ...review, _id: res.data.insertedId }, ...prevReviews]);
+
                     form.reset();
                 }
             })
@@ -58,38 +61,16 @@ const ServiceDetails = () => {
     }
 
 
-    const reviews = [
-        {
-            id: 1,
-            serviceId: 1,
-            serviceTitle: 'Web Design Service',
-            text: 'Amazing design! The team was very professional and delivered on time.',
-            rating: 5,
-            userName: 'John Doe',
-            userPhoto: 'https://via.placeholder.com/50',
-            date: '2024-12-23',
-        },
-        {
-            id: 2,
-            serviceId: 2,
-            serviceTitle: 'Graphic Design Service',
-            text: 'Great work! They really understood what I needed for my brand.',
-            rating: 4,
-            userName: 'Jane Smith',
-            userPhoto: 'https://via.placeholder.com/50',
-            date: '2024-12-22',
-        },
-        {
-            id: 3,
-            serviceId: 3,
-            serviceTitle: 'SEO Optimization',
-            text: 'My website traffic has increased significantly. Thank you!',
-            rating: 5,
-            userName: 'Emily Brown',
-            userPhoto: 'https://via.placeholder.com/50',
-            date: '2024-12-21',
-        },
-    ];
+    useEffect(() => {
+        axios.get(`http://localhost:5000/services/reviews?serviceId=${service._id}`)
+        .then(res => {
+            console.log(res.data)
+            setReviews(res.data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }, [])
 
 
     return (
@@ -123,8 +104,8 @@ const ServiceDetails = () => {
                     Reviews ({reviews.length})
                 </h2>
                 <div className="space-y-4">
-                    {reviews.map((review, index) => (
-                        <div key={index} className="bg-[#2F3E46] p-4 rounded-md shadow-sm">
+                    {reviews.map((review) => (
+                        <div key={review._id} className="bg-[#2F3E46] p-4 rounded-md shadow-sm">
                             <div className="flex items-center space-x-4">
                                 <img
                                     src={review.userPhoto}
@@ -133,7 +114,7 @@ const ServiceDetails = () => {
                                 />
                                 <p className="font-bold text-white">{review.userName}</p>
                             </div>
-                            <p className="mt-2">{review.text}</p>
+                            <p className="mt-2">{review.reviewText}</p>
                             <div className="flex items-center mt-2">
                                 <span className="text-yellow-500">
                                     {'★'.repeat(review.rating)}
