@@ -50,12 +50,22 @@ const Navbar = () => {
                                 d="M4 6h16M4 12h8m-8 6h16" />
                         </svg>
                     </div>
-                    <ul
+                    {
+                        user ? <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-[#2F3E46] rounded-lg z-[1] mt-3 w-52 p-2 shadow">
                         <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/'}>Home</Link></li>
                         <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/services'}>Services</Link></li>
+                    </ul> : <ul
+                        tabIndex={0}
+                        className="menu menu-sm dropdown-content bg-[#2F3E46] rounded-lg z-[1] mt-3 w-52 p-2 shadow">
+                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/'}>Home</Link></li>
+                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/services'}>Services</Link></li>
+                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/add-service'}>Add Service</Link></li>
+                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/my-reviews'}>My Reviews</Link></li>
+                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/my-services'}>My Services</Link></li>
                     </ul>
+                    }
                 </div>
                 <div className='flex items-center gap-2'>
                     <img className='w-11' src={logo} alt="" />
@@ -63,10 +73,19 @@ const Navbar = () => {
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
-                    <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/'}>Home</Link></li>
-                    <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/services'}>Services</Link></li>
-                </ul>
+                {
+                    user ? <ul className="menu menu-horizontal px-1">
+                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/'}>Home</Link></li>
+                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/services'}>Services</Link></li>
+                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/add-service'}>Add Service</Link></li>
+                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/my-reviews'}>My Reviews</Link></li>
+                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/my-services'}>My Services</Link></li>
+                    </ul> : <ul className="menu menu-horizontal px-1">
+                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/'}>Home</Link></li>
+                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/services'}>Services</Link></li>
+
+                    </ul>
+                }
             </div>
             <div className="navbar-end">
 
