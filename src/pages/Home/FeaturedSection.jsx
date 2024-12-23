@@ -53,9 +53,9 @@ const FeaturedSection = () => {
         <>
             <h1 className='text-white font-bold text-3xl text-center mt-16'>Featured Section</h1>
             <div className='grid grid-cols-1 sm:grid-col-2 md:grid-cols-3 gap-8 mt-10'>
-                {
+                {/* {
                     featuredServices.map((service, idx) => <ServiceCard key={idx} service={service}></ServiceCard>)
-                }
+                } */}
             </div>
         </>
     );
