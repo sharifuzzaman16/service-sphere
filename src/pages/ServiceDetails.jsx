@@ -1,20 +1,11 @@
 import React from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const ServiceDetails = () => {
 
-    const service =
-        {
-          id: 1,
-          image: 'https://via.placeholder.com/300x200',
-          title: 'Web Design Service',
-          company: 'Creative Studios',
-          website: 'https://creativestudios.com',
-          description: 'Professional web design services for your business.',
-          category: 'Web Design',
-          price: 500,
-          addedDate: '2024-12-20',
-          userEmail: 'user1@example.com',
-        }
+    const service = useLoaderData();
+    console.log(service)
+
 
         const reviews = [
             {
@@ -54,11 +45,11 @@ const ServiceDetails = () => {
         <div className="max-w-5xl mx-auto my-16">
             <div className="bg-[#2F3E46] shadow-md rounded-md p-6">
                 <img
-                    src={service.image}
-                    alt={service.title}
+                    src={service.serviceImage}
+                    alt={service.serviceTitle}
                     className="w-full h-64 object-cover rounded-md"
                 />
-                <h1 className="text-2xl text-white font-bold mt-4">{service.title}</h1>
+                <h1 className="text-2xl text-white font-bold mt-4">{service.serviceTitle}</h1>
                 <p className="text-gray-300 mt-2">{service.description}</p>
                 <p className="mt-2">
                     <strong>Category:</strong> {service.category}
@@ -67,12 +58,12 @@ const ServiceDetails = () => {
                     <strong>Price:</strong> ${service.price}
                 </p>
                 <p className="mt-2">
-                    <strong>Company:</strong> {service.company}
+                    <strong>Company:</strong> {service.companyName}
                 </p>
                 <p className="mt-2">
-                    <a href={service.website} className="text-blue-600 underline">
+                    <Link href={service.website} className="text-blue-600 underline">
                         Visit Website
-                    </a>
+                    </Link>
                 </p>
             </div>
 
