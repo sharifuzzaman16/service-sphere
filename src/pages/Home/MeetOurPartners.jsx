@@ -1,10 +1,11 @@
 import React from 'react';
 import { FaReact, FaMicrosoft, FaApple } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
+import { motion } from 'framer-motion';
 
 const MeetOurPartners = () => {
 
-    // note: fake data created by ChatGPT
+    // Note: fake data created by ChatGPT
     const partners = [
         {
             name: "React",
@@ -23,10 +24,15 @@ const MeetOurPartners = () => {
         },
         {
             name: "Apple",
-            icon: <FaApple className="text-4xl text-gray-800 mx-auto" />, 
+            icon: <FaApple className="text-4xl text-gray-800 mx-auto" />,
             description: "Apple is a global leader in software development and digital transformation.",
         },
     ];
+
+    const partnerVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
+    };
 
     return (
         <div className="pt-16">
@@ -35,16 +41,27 @@ const MeetOurPartners = () => {
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
                     {partners.map((partner, index) => (
-                        <div
+                        <motion.div
                             key={index}
                             className="bg-[#2F3E46] p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+                            variants={partnerVariants}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.2 }}
+                            transition={{ duration: 0.8, delay: index * 0.2 }}
+                            whileHover={{
+                                scale: 1.05,
+                                boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
+                                rotate: 3, 
+                                transition: { duration: 0.3 }
+                            }}
                         >
                             <div className="mb-4">
                                 {partner.icon}
                             </div>
                             <h3 className="text-xl font-semibold text-white mb-2">{partner.name}</h3>
                             <p className="text-gray-300">{partner.description}</p>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>

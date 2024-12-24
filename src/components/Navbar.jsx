@@ -56,14 +56,15 @@ const Navbar = () => {
                         className="menu menu-sm dropdown-content bg-[#2F3E46] rounded-lg z-[1] mt-3 w-52 p-2 shadow">
                         <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/'}>Home</Link></li>
                         <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/services'}>Services</Link></li>
+                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/add-service'}>Add Service</Link></li>
+                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/my-reviews'}>My Reviews</Link></li>
+                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/my-services'}>My Services</Link></li>
                     </ul> : <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-[#2F3E46] rounded-lg z-[1] mt-3 w-52 p-2 shadow">
                         <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/'}>Home</Link></li>
                         <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/services'}>Services</Link></li>
-                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/add-service'}>Add Service</Link></li>
-                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/my-reviews'}>My Reviews</Link></li>
-                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/my-services'}>My Services</Link></li>
+                        
                     </ul>
                     }
                 </div>
