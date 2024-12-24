@@ -5,6 +5,7 @@ import MeetOurPartners from './MeetOurPartners';
 import Testimonials from './Testimonials';
 import CallToAction from './CallToAction';
 import { Helmet } from 'react-helmet-async';
+import StatsSection from './StatsSection';
 
 const Home = () => {
     return (
@@ -17,6 +18,9 @@ const Home = () => {
             </section>
             <section className='w-4/5 mx-auto'>
                 <FeaturedSection></FeaturedSection>
+            </section>
+            <section className='w-4/5 mx-auto'>
+                <StatsSection></StatsSection>
             </section>
             <section className='w-4/5 mx-auto'>
                 <MeetOurPartners></MeetOurPartners>
