@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ServiceCard from '../components/ServiceCard';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
 
 const Services = () => {
   const [services, setServices] = useState([]);
@@ -31,7 +32,7 @@ const Services = () => {
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value.toLowerCase());
-    setSelectedCategory(""); 
+    setSelectedCategory("");
   };
 
   const handleCategory = (e) => {
@@ -49,6 +50,9 @@ const Services = () => {
 
   return (
     <div className="max-w-7xl mx-auto my-16 w-4/5">
+      <Helmet>
+        <title>Services - ServiceSphere</title>
+      </Helmet>
       <h1 className="text-2xl text-white text-center font-bold mb-10">Services</h1>
       <div className="flex gap-6 items-center justify-between">
         <label className="input input-bordered flex items-center gap-2">

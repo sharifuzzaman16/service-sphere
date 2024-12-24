@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
@@ -50,6 +51,9 @@ const UpdateReview = () => {
 
     return (
         <div className="max-w-5xl mx-auto my-16 p-6 bg-[#2F3E46] rounded-md">
+            <Helmet>
+                <title>{review ? serviceTitle : "Loading..."} - ServiceSphere</title>
+            </Helmet>
             <h1 className="text-2xl text-center font-bold text-white mb-6">Update Your Review</h1>
             <form onSubmit={handleUpdateReview} className="space-y-4">
                 <div>

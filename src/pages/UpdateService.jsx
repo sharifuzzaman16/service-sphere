@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../context/AuthProvider';
+import React from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useLoaderData, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const UpdateService = () => {
 
@@ -78,6 +78,9 @@ const UpdateService = () => {
 
     return (
         <div className="max-w-4xl my-16 mx-auto p-8 bg-[#2F3E46] shadow-md rounded-md">
+            <Helmet>
+                <title>{service ? service.serviceTitle : "Loading..."} - ServiceSphere</title>
+            </Helmet>
             <h1 className="text-2xl font-bold text-white text-center mb-6">Update Service</h1>
             <form onSubmit={handleUpdateService} className="space-y-4">
                 <div>

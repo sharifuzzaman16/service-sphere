@@ -3,6 +3,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const ServiceDetails = () => {
 
@@ -63,18 +64,21 @@ const ServiceDetails = () => {
 
     useEffect(() => {
         axios.get(`http://localhost:5000/services/reviews?serviceId=${service._id}`)
-        .then(res => {
-            console.log(res.data)
-            setReviews(res.data)
-        })
-        .catch(err => {
-            console.log(err)
-        })
+            .then(res => {
+                console.log(res.data)
+                setReviews(res.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }, [])
 
 
     return (
         <div className="max-w-5xl mx-auto my-16">
+            <Helmet>
+                <title>{service ? service.serviceTitle : "Loading..."} - ServiceSphere</title>
+            </Helmet>
             <div className="bg-[#2F3E46] shadow-md rounded-md p-6">
                 <img
                     src={service.serviceImage}

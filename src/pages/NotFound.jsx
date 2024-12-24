@@ -1,8 +1,12 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const NotFound = () => {
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-900">
+            <Helmet>
+                <title>Not Found - ServiceSphere</title>
+            </Helmet>
             <div className="text-center">
                 <h1 className="text-9xl font-bold text-blue-600">404</h1>
                 <p className="text-2xl font-semibold mt-4 text-gray-100">

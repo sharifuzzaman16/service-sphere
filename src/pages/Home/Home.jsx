@@ -4,10 +4,14 @@ import FeaturedSection from './FeaturedSection';
 import MeetOurPartners from './MeetOurPartners';
 import Testimonials from './Testimonials';
 import CallToAction from './CallToAction';
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
     return (
         <>
+            <Helmet>
+                <title>Home - ServiceSphere</title>
+            </Helmet>
             <section>
                 <Hero></Hero>
             </section>

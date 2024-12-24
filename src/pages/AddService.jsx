@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../context/AuthProvider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const AddService = () => {
 
@@ -82,6 +83,9 @@ const AddService = () => {
 
     return (
         <div className="max-w-4xl my-16 mx-auto p-8 bg-[#2F3E46] shadow-md rounded-md">
+            <Helmet>
+                <title>Add Service - ServiceSphere</title>
+            </Helmet>
             <h1 className="text-2xl font-bold text-white text-center mb-6">Add a New Service</h1>
             <form onSubmit={handleAddService} className="space-y-4">
                 <div>

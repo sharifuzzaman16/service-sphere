@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
 import Swal from 'sweetalert2';
 import { FcGoogle } from 'react-icons/fc';
+import { Helmet } from 'react-helmet-async';
 
 const Register = () => {
 
@@ -99,6 +100,9 @@ const Register = () => {
 
     return (
         <div className="flex items-center justify-center min-h-screen">
+            <Helmet>
+                <title>Register - ServiceSphere</title>
+            </Helmet>
             <div className="w-full max-w-sm bg-[#2F3E46] my-16 p-6 rounded-lg shadow-lg">
                 <h2 className="text-2xl text-white font-semibold text-center mb-6">Register</h2>
 

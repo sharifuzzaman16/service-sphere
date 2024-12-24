@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const MyServices = () => {
     const { user } = useContext(AuthContext);
@@ -69,6 +70,9 @@ const MyServices = () => {
 
     return (
         <div className="max-w-7xl mx-auto my-16">
+            <Helmet>
+                <title>My Services - ServiceSphere</title>
+            </Helmet>
             <div className="flex items-center justify-center flex-col mb-6">
                 <h1 className="text-2xl text-white font-bold mb-6">My Services</h1>
                 <label className="input input-bordered w-full max-w-xs flex items-center gap-2">

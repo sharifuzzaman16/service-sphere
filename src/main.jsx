@@ -18,6 +18,7 @@ import AuthProvider from './context/AuthProvider';
 import MyServices from './pages/MyServices';
 import UpdateReview from './pages/UpdateReview';
 import UpdateService from './pages/UpdateService';
+import { HelmetProvider } from 'react-helmet-async';
 
 const router = createBrowserRouter([
   {
@@ -47,7 +48,7 @@ const router = createBrowserRouter([
       {
         path: "/my-reviews/update/:id",
         element: <UpdateReview></UpdateReview>,
-        loader: ({params}) => fetch(`http://localhost:5000/service/reviews/details/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/service/reviews/details/${params.id}`)
       },
       {
         path: "/add-service",
@@ -60,12 +61,12 @@ const router = createBrowserRouter([
       {
         path: "/my-services/update/:id",
         element: <UpdateService></UpdateService>,
-        loader: ({params}) => fetch(`http://localhost:5000/services/details/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/services/details/${params.id}`)
       },
       {
         path: "/services/details/:id",
         element: <ServiceDetails></ServiceDetails>,
-        loader: ({params}) => fetch(`http://localhost:5000/services/details/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/services/details/${params.id}`)
       },
     ]
 
@@ -78,8 +79,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router} />
-    </AuthProvider>
+    <HelmetProvider>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </HelmetProvider>
   </StrictMode>,
 )

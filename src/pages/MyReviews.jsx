@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../context/AuthProvider';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const MyReviews = () => {
     const [reviews, setReviews] = useState([]);
@@ -13,14 +14,14 @@ const MyReviews = () => {
 
         const fetchReviews = async () => {
             try {
-                
+
                 const { data: reviewsData } = await axios.get(
                     `http://localhost:5000/services/reviews/my-reviews?userEmail=${user.email}`
                 );
 
                 if (reviewsData.length === 0) {
                     setReviews([]);
-                    
+
                     return;
                 }
 
@@ -37,10 +38,10 @@ const MyReviews = () => {
                 }));
 
                 setReviews(reviewsWithTitles);
-               
+
             } catch (error) {
                 console.error('Error fetching reviews or service details:', error);
-              
+
             }
         };
 
@@ -86,6 +87,9 @@ const MyReviews = () => {
 
     return (
         <div className="max-w-5xl mx-auto my-16">
+            <Helmet>
+                <title>My Reviews - ServiceSphere</title>
+            </Helmet>
             <h1 className="text-2xl font-bold mb-6 text-white text-center">My Reviews</h1>
             {reviews.length === 0 ? (
                 <div className="text-center text-white">
@@ -104,7 +108,7 @@ const MyReviews = () => {
                                 <p className="text-yellow-500">{'★'.repeat(review.rating)}</p>
                             </div>
                             <div className="space-x-2">
-                                <Link to={`/my-reviews/update/${review._id}`} state={{serviceTitle: review.serviceTitle}}>
+                                <Link to={`/my-reviews/update/${review._id}`} state={{ serviceTitle: review.serviceTitle }}>
                                     <button
                                         className="bg-green-500 text-white px-4 py-1 rounded-md"
                                     >
