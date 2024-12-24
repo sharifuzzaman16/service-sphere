@@ -1,7 +1,6 @@
-import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthProvider";
-import { Link } from "react-router-dom";
+import axios from "axios";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 
@@ -10,23 +9,26 @@ const MyServices = () => {
     const [services, setServices] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
     const [filteredServices, setFilteredServices] = useState([]);
+    const [selectedService, setSelectedService] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
         axios
             .get(`http://localhost:5000/services/my-services?userEmail=${user.email}`)
             .then((res) => {
-                console.log(res.data);
                 setServices(res.data);
                 setFilteredServices(res.data);
             })
             .catch((err) => {
                 console.log(err);
             });
-    }, []);
+    }, [user.email]);
 
     useEffect(() => {
         const filtered = services.filter((service) =>
-            service.serviceTitle.toLowerCase().includes(searchQuery) || service.category.toLowerCase().includes(searchQuery) || String(service.price).includes(searchQuery)
+            service.serviceTitle.toLowerCase().includes(searchQuery) ||
+            service.category.toLowerCase().includes(searchQuery) ||
+            String(service.price).includes(searchQuery)
         );
         setFilteredServices(filtered);
     }, [searchQuery, services]);
@@ -43,30 +45,54 @@ const MyServices = () => {
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
+            confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/services/my-services/${id}`)
-                    .then(res => {
-                        console.log(res.data)
+                axios
+                    .delete(`http://localhost:5000/services/my-services/${id}`)
+                    .then((res) => {
                         if (res.data.deletedCount > 0) {
-                            Swal.fire({
-                                title: "Deleted!",
-                                text: "Your service has been deleted.",
-                                icon: "success"
-                            });
-                            const updatedServices = services.filter(service => service._id !== id);
+                            Swal.fire("Deleted!", "Your service has been deleted.", "success");
+                            const updatedServices = services.filter((service) => service._id !== id);
                             setServices(updatedServices);
                             setFilteredServices(updatedServices);
                         }
                     })
-                    .catch(err => {
-                        console.log(err)
-                    })
-
+                    .catch((err) => {
+                        console.log(err);
+                    });
             }
         });
-    }
+    };
+
+    const openModal = (service) => {
+        setSelectedService(service);
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setSelectedService(null);
+        setIsModalOpen(false);
+    };
+
+    const handleUpdateService = (updatedService) => {
+        axios
+            .patch(`http://localhost:5000/services/my-services/${updatedService._id}`, updatedService)
+            .then((res) => {
+                if (res.data.modifiedCount > 0) {
+                    Swal.fire("Success!", "Service updated successfully.", "success");
+                    const updatedServices = services.map((service) =>
+                        service._id === updatedService._id ? updatedService : service
+                    );
+                    setServices(updatedServices);
+                    setFilteredServices(updatedServices);
+                    closeModal();
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
 
     return (
         <div className="max-w-7xl mx-auto my-16">
@@ -83,18 +109,6 @@ const MyServices = () => {
                         className="grow"
                         placeholder="Search"
                     />
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 16 16"
-                        fill="currentColor"
-                        className="h-4 w-4 opacity-70"
-                    >
-                        <path
-                            fillRule="evenodd"
-                            d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-                            clipRule="evenodd"
-                        />
-                    </svg>
                 </label>
             </div>
             <table className="w-full text-left border-collapse">
@@ -122,12 +136,16 @@ const MyServices = () => {
                                 <td className="p-4">{service.category}</td>
                                 <td className="p-4">${service.price}</td>
                                 <td className="p-4 space-x-2">
-                                    <Link to={`/my-services/update/${service._id}`}>
-                                        <button className="bg-green-500 text-white px-4 py-1 rounded-md">
-                                            Edit
-                                        </button>
-                                    </Link>
-                                    <button onClick={() => handleDelete(service._id)} className="bg-red-500 text-white px-4 py-1 rounded-md">
+                                    <button
+                                        onClick={() => openModal(service)}
+                                        className="bg-green-500 text-white px-4 py-1 rounded-md"
+                                    >
+                                        Edit
+                                    </button>
+                                    <button
+                                        onClick={() => handleDelete(service._id)}
+                                        className="bg-red-500 text-white px-4 py-1 rounded-md"
+                                    >
                                         Delete
                                     </button>
                                 </td>
@@ -142,8 +160,152 @@ const MyServices = () => {
                     )}
                 </tbody>
             </table>
+
+            {isModalOpen && (
+                <UpdateServiceModal
+                    service={selectedService}
+                    onClose={closeModal}
+                    onUpdate={handleUpdateService}
+                />
+            )}
         </div>
     );
 };
+
+const UpdateServiceModal = ({ service, onClose, onUpdate }) => {
+    const [formData, setFormData] = useState({ ...service });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        onUpdate(formData);
+    };
+
+    return (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+            <div className="bg-[#2F3E46] rounded-md shadow-md w-full max-w-[700px] max-h-[90vh] overflow-y-auto">
+                <div className="p-6">
+                    <h2 className="text-xl text-white text-center font-bold mb-4">Edit Service</h2>
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                        <div>
+                            <label className="block text-sm font-medium mb-2">Service Image</label>
+                            <input
+                                name="serviceImage"
+                                value={formData.serviceImage}
+                                onChange={handleChange}
+                                type="url"
+                                placeholder="Service image URL"
+                                className="input input-bordered w-full"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium mb-2">Service Title</label>
+                            <input
+                                name="serviceTitle"
+                                value={formData.serviceTitle}
+                                onChange={handleChange}
+                                type="text"
+                                placeholder="Service title"
+                                className="input input-bordered w-full"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium mb-2">Company Name</label>
+                            <input
+                                name="companyName"
+                                value={formData.companyName}
+                                onChange={handleChange}
+                                type="text"
+                                placeholder="Company name"
+                                className="input input-bordered w-full"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium mb-2">Website</label>
+                            <input
+                                name="website"
+                                value={formData.website}
+                                onChange={handleChange}
+                                type="url"
+                                placeholder="Website URL"
+                                className="input input-bordered w-full"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium mb-2">Description</label>
+                            <textarea
+                                name="description"
+                                value={formData.description}
+                                onChange={handleChange}
+                                className="textarea textarea-bordered w-full"
+                                placeholder="Description"
+                            ></textarea>
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium mb-2">Category</label>
+                            <select
+                                name="category"
+                                value={formData.category}
+                                onChange={handleChange}
+                                className="select select-bordered w-full"
+                            >
+                                <option disabled value="">
+                                    Select a category
+                                </option>
+                                <option value="technology">Technology and IT</option>
+                                <option value="healthcare">Healthcare</option>
+                                <option value="education">Education</option>
+                                <option value="finance">Finance and Accounting</option>
+                                <option value="marketing">Marketing and Sales</option>
+                                <option value="engineering">Engineering</option>
+                                <option value="design">Creative and Design</option>
+                                <option value="construction">Construction and Real Estate</option>
+                                <option value="hospitality">Hospitality and Tourism</option>
+                                <option value="administration">Administrative and Support Services</option>
+                                <option value="legal">Legal</option>
+                                <option value="media">Media and Communications</option>
+                                <option value="science">Science and Research</option>
+                                <option value="transport">Transport and Logistics</option>
+                                <option value="retail">Retail and Customer Service</option>
+                                <option value="trades">Skilled Trades</option>
+                                <option value="remote">Remote and Freelance Jobs</option>
+                                <option value="green">Green and Sustainable Jobs</option>
+                                <option value="ecommerce">E-commerce</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium mb-2">Price</label>
+                            <input
+                                name="price"
+                                value={formData.price}
+                                onChange={handleChange}
+                                type="number"
+                                placeholder="Price"
+                                className="input input-bordered w-full"
+                            />
+                        </div>
+                        <button
+                            type="submit"
+                            className="bg-blue-600 w-full text-white px-4 py-3 rounded-md hover:bg-blue-700"
+                        >
+                            Update Service
+                        </button>
+                    </form>
+                    <button
+                        onClick={onClose}
+                        className="btn btn-secondary text-white mt-4 w-full"
+                    >
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+};
+
 
 export default MyServices;
