@@ -18,9 +18,23 @@ const Register = () => {
         const photo = form.photo.value;
         const password = form.password.value;
 
+
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+
+        if (!passwordRegex.test(password)) {
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "Invalid Password!",
+                text: "Password must have at least one uppercase letter, one lowercase letter, and be at least 6 characters long.",
+                showConfirmButton: true,
+            });
+            return;
+        }
+
         createUser(email, password)
             .then((result) => {
-                console.log(result.user)
+                console.log(result.user);
                 updateUserProfile(name, photo)
                     .then(() => {
                         Swal.fire({
@@ -34,7 +48,7 @@ const Register = () => {
                         navigate('/');
                     })
                     .catch((err) => {
-                        console.log(err)
+                        console.log(err);
                         Swal.fire({
                             position: "center",
                             icon: "error",
@@ -42,8 +56,9 @@ const Register = () => {
                             text: err.message,
                             showConfirmButton: true,
                         });
-                    })
-            }).catch((err) => {
+                    });
+            })
+            .catch((err) => {
                 console.error("Registration error:", err.message);
                 Swal.fire({
                     position: "center",
@@ -52,10 +67,9 @@ const Register = () => {
                     text: err.message,
                     showConfirmButton: true,
                 });
-            })
-
-
+            });
     };
+
 
     const handleGoogleSignIn = () => {
         signInWithGoogle()
