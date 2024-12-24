@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const MyServices = () => {
     const { user } = useContext(AuthContext);
@@ -32,6 +33,39 @@ const MyServices = () => {
     const handleSearch = (e) => {
         setSearchQuery(e.target.value.toLowerCase());
     };
+
+    const handleDelete = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:5000/services/my-services/${id}`)
+                    .then(res => {
+                        console.log(res.data)
+                        if (res.data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your service has been deleted.",
+                                icon: "success"
+                            });
+                            const updatedServices = services.filter(service => service._id !== id);
+                            setServices(updatedServices);
+                            setFilteredServices(updatedServices);
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+
+            }
+        });
+    }
 
     return (
         <div className="max-w-7xl mx-auto my-16">
@@ -89,7 +123,7 @@ const MyServices = () => {
                                             Edit
                                         </button>
                                     </Link>
-                                    <button className="bg-red-500 text-white px-4 py-1 rounded-md">
+                                    <button onClick={() => handleDelete(service._id)} className="bg-red-500 text-white px-4 py-1 rounded-md">
                                         Delete
                                     </button>
                                 </td>

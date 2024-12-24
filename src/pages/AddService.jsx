@@ -20,6 +20,27 @@ const AddService = () => {
         const addedDate = new Date().toISOString();
         const userEmail = user.email;
 
+     
+        if (!serviceImage || !serviceTitle || !companyName || !category || !price) {
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "All fields are required!",
+                showConfirmButton: true,
+            });
+            return;
+        }
+
+        if (isNaN(price) || price <= 0) {
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "Price must be a valid number greater than 0",
+                showConfirmButton: true,
+            });
+            return;
+        }
+
         const service = {
             serviceImage,
             serviceTitle,
@@ -31,6 +52,7 @@ const AddService = () => {
             addedDate,
             userEmail
         }
+
         axios.post('http://localhost:5000/services', service)
             .then(res => {
                 console.log(res.data)
@@ -51,7 +73,7 @@ const AddService = () => {
                     position: "center",
                     icon: "error",
                     title: "Failed to add service!",
-                    text: err.message,
+                    text: err.response?.data?.message || err.message,
                     showConfirmButton: true,
                 });
             })
@@ -64,7 +86,7 @@ const AddService = () => {
             <form onSubmit={handleAddService} className="space-y-4">
                 <div>
                     <label className="block text-sm font-medium text-gray-300 mb-2">Service Image</label>
-                    <input name='serviceImage' type="url" placeholder="Service image" className="input input-bordered w-full" />
+                    <input name='serviceImage' type="url" placeholder="Service image URL" className="input input-bordered w-full" />
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-300 mb-2">Service Title</label>
@@ -76,7 +98,7 @@ const AddService = () => {
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-300 mb-2">Website</label>
-                    <input name='website' type="url" placeholder="Website url" className="input input-bordered w-full" />
+                    <input name='website' type="url" placeholder="Website URL" className="input input-bordered w-full" />
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-300 mb-2">Description</label>
@@ -89,8 +111,25 @@ const AddService = () => {
                         className="select select-bordered w-full"
                     >
                         <option disabled value="">Select a category</option>
-                        <option value="web-design">Web Design</option>
-                        <option value="graphic-design">Graphic Design</option>
+                        <option value="technology">Technology and IT</option>
+                        <option value="healthcare">Healthcare</option>
+                        <option value="education">Education</option>
+                        <option value="finance">Finance and Accounting</option>
+                        <option value="marketing">Marketing and Sales</option>
+                        <option value="engineering">Engineering</option>
+                        <option value="design">Creative and Design</option>
+                        <option value="construction">Construction and Real Estate</option>
+                        <option value="hospitality">Hospitality and Tourism</option>
+                        <option value="administration">Administrative and Support Services</option>
+                        <option value="legal">Legal</option>
+                        <option value="media">Media and Communications</option>
+                        <option value="science">Science and Research</option>
+                        <option value="transport">Transport and Logistics</option>
+                        <option value="retail">Retail and Customer Service</option>
+                        <option value="trades">Skilled Trades</option>
+                        <option value="remote">Remote and Freelance Jobs</option>
+                        <option value="green">Green and Sustainable Jobs</option>
+                        <option value="ecommerce">E-commerce</option>
                     </select>
                 </div>
                 <div>
