@@ -1,11 +1,13 @@
 import axios from 'axios';
 import React from 'react';
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 
 const UpdateReview = () => {
 
+    const location = useLocation();
+    const serviceTitle = location.state?.serviceTitle;
     const review = useLoaderData();
     const navigate = useNavigate();
 
@@ -50,6 +52,15 @@ const UpdateReview = () => {
         <div className="max-w-5xl mx-auto my-16 p-6 bg-[#2F3E46] rounded-md">
             <h1 className="text-2xl text-center font-bold text-white mb-6">Update Your Review</h1>
             <form onSubmit={handleUpdateReview} className="space-y-4">
+                <div>
+                    <label className="block mb-2 text-sm text-white">Service Title</label>
+                    <input
+                        disabled
+                        type="text"
+                        defaultValue={serviceTitle}
+                        className="input input-bordered w-full"
+                    />
+                </div>
                 <div>
                     <label className="block mb-2 text-sm text-white">Review Text</label>
                     <textarea

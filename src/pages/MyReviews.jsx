@@ -53,7 +53,7 @@ const MyReviews = () => {
                             <p className="text-yellow-500">{'★'.repeat(review.rating)}</p>
                         </div>
                         <div className="space-x-2">
-                            <Link to={`/my-reviews/update/${review._id}`}>
+                            <Link to={`/my-reviews/update/${review._id}`} state={{serviceTitle: review.serviceTitle}}>
                             <button
                                 className="bg-green-500 text-white px-4 py-1 rounded-md"
                             >
