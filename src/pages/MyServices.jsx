@@ -297,7 +297,7 @@ const UpdateServiceModal = ({ service, onClose, onUpdate }) => {
                     </form>
                     <button
                         onClick={onClose}
-                        className="btn btn-secondary text-white mt-4 w-full"
+                        className="bg-gray-500 mt-4 text-white px-4 py-3 rounded-md w-full"
                     >
                         Close
                     </button>

@@ -17,6 +17,7 @@ import ServiceDetails from './pages/ServiceDetails';
 import AuthProvider from './context/AuthProvider';
 import MyServices from './pages/MyServices';
 import { HelmetProvider } from 'react-helmet-async';
+import PrivateRoute from './routes/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -41,19 +42,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/my-reviews",
-        element: <MyReviews></MyReviews>
+        element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
       },
       {
         path: "/add-service",
-        element: <AddService></AddService>
+        element: <PrivateRoute><AddService></AddService></PrivateRoute>
       },
       {
         path: "/my-services",
-        element: <MyServices></MyServices>
+        element: <PrivateRoute><MyServices></MyServices></PrivateRoute>
       },
       {
         path: "/services/details/:id",
-        element: <ServiceDetails></ServiceDetails>,
+        element: <PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/services/details/${params.id}`)
       },
     ]

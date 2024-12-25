@@ -164,8 +164,17 @@ const MyReviews = () => {
 
             {isModalOpen && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-                    <div className="bg-white p-6 rounded-md shadow-md w-full max-w-lg">
-                        <h2 className="text-xl font-bold mb-4">Update Review</h2>
+                    <div className="bg-[#2F3E46] p-6 rounded-md shadow-md w-full max-w-[700px]">
+                        <h2 className="text-xl text-center text-white font-bold mb-4">Update Review</h2>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-300 mb-2">Service Title</label>
+                            <input
+                                disabled
+                                defaultValue={selectedReview.serviceTitle}
+                                type="text"
+                                className="input input-bordered w-full"
+                            />
+                        </div>
                         <div>
                             <label className="block text-sm font-medium text-gray-300 mb-2">Review Text</label>
                             <textarea
@@ -186,16 +195,16 @@ const MyReviews = () => {
                                 className="input input-bordered w-full"
                             />
                         </div>
-                        <div className="mt-4 flex space-x-2">
+                        <div className="mt-4 ">
                             <button
                                 onClick={handleUpdateReview}
-                                className="bg-blue-500 text-white px-4 py-2 rounded-md"
+                                className="bg-blue-500 text-white w-full py-3 rounded-md"
                             >
                                 Update Review
                             </button>
                             <button
                                 onClick={closeModal}
-                                className="bg-gray-500 text-white px-4 py-2 rounded-md"
+                                className="bg-gray-500 mt-4 w-full text-white px-4 py-3 rounded-md"
                             >
                                 Close
                             </button>
