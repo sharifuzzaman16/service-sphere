@@ -4,12 +4,14 @@ import { AuthContext } from '../context/AuthProvider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet-async';
+import useAxiosSecure from '../hooks/useAxiosSecure';
 
 const ServiceDetails = () => {
 
     const { user } = useContext(AuthContext);
     const [reviews, setReviews] = useState([]);
     const service = useLoaderData();
+    const axiosSecure = useAxiosSecure();
     console.log(service)
 
     const handleReviewSubmit = (e) => {
@@ -33,7 +35,7 @@ const ServiceDetails = () => {
             serviceId
         }
 
-        axios.post('http://localhost:5000/services/reviews', review)
+        axiosSecure.post('/services/reviews', review)
             .then(res => {
                 console.log(res.data)
                 if (res.data.insertedId) {

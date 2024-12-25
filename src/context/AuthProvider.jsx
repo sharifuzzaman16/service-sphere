@@ -10,13 +10,17 @@ import {
 import React, { createContext, useEffect, useState } from 'react';
 import { auth } from '../firebase/firebase.init';
 import Spinner from '../components/Spinner';
+import axios from 'axios';
+
 
 export const AuthContext = createContext();
+
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const googleProvider = new GoogleAuthProvider();
+
 
     // Create a new user
     const createUser = (email, password) => {
@@ -55,7 +59,25 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
-            setLoading(false); // Set loading to false once the user is fetched
+
+            if (currentUser?.email) {
+                const user = { email: currentUser.email };
+
+                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data);
+                        setLoading(false);
+                    })
+            }
+            else {
+                axios.post('http://localhost:5000/logout', {}, { withCredentials: true })
+                    .then(res => {
+                        console.log('logout', res.data);
+                        setLoading(false);
+                    })
+            }
+
+            
         });
 
         return () => unsubscribe();

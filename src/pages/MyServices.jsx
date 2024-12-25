@@ -3,6 +3,7 @@ import { AuthContext } from "../context/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const MyServices = () => {
     const { user } = useContext(AuthContext);
@@ -11,6 +12,7 @@ const MyServices = () => {
     const [filteredServices, setFilteredServices] = useState([]);
     const [selectedService, setSelectedService] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const axiosSecure = useAxiosSecure();
 
     useEffect(() => {
         axios
@@ -48,8 +50,8 @@ const MyServices = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                axios
-                    .delete(`http://localhost:5000/services/my-services/${id}`)
+                axiosSecure
+                    .delete(`/services/my-services/${id}`)
                     .then((res) => {
                         if (res.data.deletedCount > 0) {
                             Swal.fire("Deleted!", "Your service has been deleted.", "success");
@@ -76,8 +78,8 @@ const MyServices = () => {
     };
 
     const handleUpdateService = (updatedService) => {
-        axios
-            .patch(`http://localhost:5000/services/my-services/${updatedService._id}`, updatedService)
+        axiosSecure
+            .patch(`/services/my-services/${updatedService._id}`, updatedService)
             .then((res) => {
                 if (res.data.modifiedCount > 0) {
                     Swal.fire("Success!", "Service updated successfully.", "success");

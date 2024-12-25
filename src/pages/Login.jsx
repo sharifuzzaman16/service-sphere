@@ -27,6 +27,7 @@ const Login = () => {
                     timer: 1500,
                 });
                 form.reset();
+                navigate('/')
             })
             .catch((err) => {
                 console.log(err)
@@ -51,6 +52,7 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 1500,
                 });
+                navigate('/')
             })
             .catch((err) => {
                 console.log(err.massage)

@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../context/AuthProvider';
 import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet-async';
+import useAxiosSecure from '../hooks/useAxiosSecure';
 
 const MyReviews = () => {
     const [reviews, setReviews] = useState([]);
@@ -10,7 +11,7 @@ const MyReviews = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [reviewText, setReviewText] = useState("");
     const [rating, setRating] = useState(0);
-
+    const axiosSecure = useAxiosSecure();
     const { user, loading } = useContext(AuthContext);
 
     useEffect(() => {
@@ -60,7 +61,7 @@ const MyReviews = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/services/reviews/my-reviews/${id}`)
+                axiosSecure.delete(`/services/reviews/my-reviews/${id}`)
                     .then(res => {
                         console.log(res.data);
                         if (res.data.deletedCount > 0) {
@@ -104,7 +105,7 @@ const MyReviews = () => {
             rating
         };
 
-        axios.patch(`http://localhost:5000/services/reviews/${selectedReview._id}`, updatedReview)
+        axiosSecure.patch(`/services/reviews/${selectedReview._id}`, updatedReview)
             .then((res) => {
                 if (res.data.modifiedCount > 0) {
                     Swal.fire("Updated!", "Your review has been updated.", "success");

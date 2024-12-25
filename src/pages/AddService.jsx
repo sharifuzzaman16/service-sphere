@@ -3,10 +3,12 @@ import { AuthContext } from '../context/AuthProvider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet-async';
+import useAxiosSecure from '../hooks/useAxiosSecure';
 
 const AddService = () => {
 
     const { user } = useContext(AuthContext);
+    const axiosSecure = useAxiosSecure();
 
     const handleAddService = (e) => {
         e.preventDefault();
@@ -54,7 +56,7 @@ const AddService = () => {
             userEmail
         }
 
-        axios.post('http://localhost:5000/services', service)
+        axiosSecure.post('/services', service)
             .then(res => {
                 console.log(res.data)
                 if (res.data.insertedId) {
