@@ -70,7 +70,7 @@ const Navbar = () => {
                 </div>
                 <div className='flex items-center gap-2'>
                     <img className='w-11' src={logo} alt="" />
-                    <a className="text-xl font-bold flex text-white">ServiceSphere</a>
+                    <Link to={'/'} className="text-xl font-bold flex text-white">ServiceSphere</Link>
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">

@@ -144,7 +144,7 @@ const MyReviews = () => {
                                 <p className="text-gray-300">{review.reviewText}</p>
                                 <p className="text-yellow-500">{'★'.repeat(review.rating)}</p>
                             </div>
-                            <div className="space-x-2">
+                            <div className="flex gap-2 flex-wrap items-center justify-center">
                                 <button
                                     onClick={() => openModal(review)}
                                     className="bg-green-500 text-white px-4 py-1 rounded-md"

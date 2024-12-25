@@ -54,7 +54,7 @@ const Services = () => {
         <title>Services - ServiceSphere</title>
       </Helmet>
       <h1 className="text-2xl text-white text-center font-bold mb-10">Services</h1>
-      <div className="flex gap-6 items-center justify-between">
+      <div className="flex flex-col lg:flex-row gap-6 items-center lg:justify-between">
         <label className="input input-bordered flex items-center gap-2">
           <input
             onChange={handleSearch}
@@ -113,7 +113,7 @@ const Services = () => {
 
 
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 justify-items-center md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center lg:grid-cols-3 gap-8">
         {filteredServices.length > 0 ? (
           filteredServices.map((service) => <ServiceCard key={service._id} service={service} />)
         ) : (

@@ -39,7 +39,7 @@ const MeetOurPartners = () => {
             <div className="container mx-auto text-center">
                 <h2 className="text-3xl font-semibold text-white mb-8">Meet Our Partners</h2>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                     {partners.map((partner, index) => (
                         <motion.div
                             key={index}

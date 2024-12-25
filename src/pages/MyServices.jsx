@@ -137,7 +137,7 @@ const MyServices = () => {
                                 <td className="p-4">{service.serviceTitle}</td>
                                 <td className="p-4">{service.category}</td>
                                 <td className="p-4">${service.price}</td>
-                                <td className="p-4 space-x-2">
+                                <td className="p-4 flex items-center justify-center gap-2 flex-wrap">
                                     <button
                                         onClick={() => openModal(service)}
                                         className="bg-green-500 text-white px-4 py-1 rounded-md"
