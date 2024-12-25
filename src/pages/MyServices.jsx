@@ -16,13 +16,12 @@ const MyServices = () => {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:5000/services/my-services?userEmail=${user.email}`)
+            .get(`https://service-sphere-server.vercel.app/services/my-services?userEmail=${user.email}`)
             .then((res) => {
                 setServices(res.data);
                 setFilteredServices(res.data);
             })
             .catch((err) => {
-                console.log(err);
             });
     }, [user.email]);
 
@@ -61,7 +60,6 @@ const MyServices = () => {
                         }
                     })
                     .catch((err) => {
-                        console.log(err);
                     });
             }
         });
@@ -92,7 +90,6 @@ const MyServices = () => {
                 }
             })
             .catch((err) => {
-                console.log(err);
             });
     };
 

@@ -12,19 +12,19 @@ const StatsSection = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/total-users')
+      .get('https://service-sphere-server.vercel.app/total-users')
       .then(res => setTotalUsers(res.data.count))
-      .catch(err => console.log(err));
-    
+      .catch(err => { });
+
     axios
-      .get('http://localhost:5000/total-reviews')
+      .get('https://service-sphere-server.vercel.app/total-reviews')
       .then(res => setTotalReviews(res.data.count))
-      .catch(err => console.log(err));
-    
+      .catch(err => { });
+
     axios
-      .get('http://localhost:5000/total-services')
+      .get('https://service-sphere-server.vercel.app/total-services')
       .then(res => setTotalServices(res.data.count))
-      .catch(err => console.log(err));
+      .catch(err => { });
   }, []);
 
   useEffect(() => {

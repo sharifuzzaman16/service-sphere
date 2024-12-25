@@ -12,7 +12,6 @@ const ServiceDetails = () => {
     const [reviews, setReviews] = useState([]);
     const service = useLoaderData();
     const axiosSecure = useAxiosSecure();
-    console.log(service)
 
     const handleReviewSubmit = (e) => {
         e.preventDefault();
@@ -37,7 +36,6 @@ const ServiceDetails = () => {
 
         axiosSecure.post('/services/reviews', review)
             .then(res => {
-                console.log(res.data)
                 if (res.data.insertedId) {
                     Swal.fire({
                         position: "center",
@@ -52,7 +50,6 @@ const ServiceDetails = () => {
                 }
             })
             .catch(err => {
-                console.log(err)
                 Swal.fire({
                     position: "center",
                     icon: "error",
@@ -65,13 +62,11 @@ const ServiceDetails = () => {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/services/reviews?serviceId=${service._id}`)
+        axios.get(`https://service-sphere-server.vercel.app/services/reviews?serviceId=${service._id}`)
             .then(res => {
-                console.log(res.data)
                 setReviews(res.data)
             })
             .catch(err => {
-                console.log(err)
             })
     }, [])
 

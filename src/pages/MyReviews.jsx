@@ -20,7 +20,7 @@ const MyReviews = () => {
         const fetchReviews = async () => {
             try {
                 const { data: reviewsData } = await axios.get(
-                    `http://localhost:5000/services/reviews/my-reviews?userEmail=${user.email}`
+                    `https://service-sphere-server.vercel.app/services/reviews/my-reviews?userEmail=${user.email}`
                 );
 
                 if (reviewsData.length === 0) {
@@ -29,7 +29,7 @@ const MyReviews = () => {
                 }
 
                 const serviceDetailsPromises = reviewsData.map((review) =>
-                    axios.get(`http://localhost:5000/services/details/${review.serviceId}`)
+                    axios.get(`https://service-sphere-server.vercel.app/services/details/${review.serviceId}`)
                 );
 
                 const serviceDetailsResponses = await Promise.all(serviceDetailsPromises);
@@ -63,7 +63,6 @@ const MyReviews = () => {
             if (result.isConfirmed) {
                 axiosSecure.delete(`/services/reviews/my-reviews/${id}`)
                     .then(res => {
-                        console.log(res.data);
                         if (res.data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",
@@ -75,7 +74,6 @@ const MyReviews = () => {
                         }
                     })
                     .catch(err => {
-                        console.log(err);
                         Swal.fire({
                             title: "Error!",
                             text: "Failed to delete the review. Please try again.",
@@ -117,7 +115,6 @@ const MyReviews = () => {
                 }
             })
             .catch((err) => {
-                console.log(err);
                 Swal.fire("Error!", "Failed to update the review. Please try again.", "error");
             });
     };

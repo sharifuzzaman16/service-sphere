@@ -5,13 +5,13 @@ import { useNavigate } from 'react-router-dom';
 
 
 const axiosInstance = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://service-sphere-server.vercel.app',
     withCredentials: true,
 })
 
 const useAxiosSecure = () => {
 
-    const {logOutUser} = useContext(AuthContext);
+    const { logOutUser } = useContext(AuthContext);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -21,12 +21,11 @@ const useAxiosSecure = () => {
 
             if (error.status === 401) {
                 logOutUser()
-                .then(() => {
-                    navigate('/login')
-                })
-                .catch((err) => {
-                    console.log(err)
-                })
+                    .then(() => {
+                        navigate('/login')
+                    })
+                    .catch((err) => {
+                    })
             }
 
             return Promise.reject(error);

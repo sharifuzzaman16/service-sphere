@@ -35,7 +35,6 @@ const Register = () => {
 
         createUser(email, password)
             .then((result) => {
-                console.log(result.user);
                 updateUserProfile(name, photo)
                     .then(() => {
                         Swal.fire({
@@ -49,7 +48,6 @@ const Register = () => {
                         navigate('/');
                     })
                     .catch((err) => {
-                        console.log(err);
                         Swal.fire({
                             position: "center",
                             icon: "error",
@@ -75,7 +73,6 @@ const Register = () => {
     const handleGoogleSignIn = () => {
         signInWithGoogle()
             .then((result) => {
-                console.log(result.user)
                 Swal.fire({
                     position: "center",
                     icon: "success",
@@ -86,7 +83,6 @@ const Register = () => {
                 navigate('/');
             })
             .catch((err) => {
-                console.log(err.massage)
                 Swal.fire({
                     position: "center",
                     icon: "error",

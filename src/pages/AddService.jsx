@@ -58,7 +58,6 @@ const AddService = () => {
 
         axiosSecure.post('/services', service)
             .then(res => {
-                console.log(res.data)
                 if (res.data.insertedId) {
                     Swal.fire({
                         position: "center",
@@ -71,7 +70,6 @@ const AddService = () => {
                 }
             })
             .catch(err => {
-                console.log(err)
                 Swal.fire({
                     position: "center",
                     icon: "error",

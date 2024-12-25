@@ -7,11 +7,10 @@ const FeaturedSection = () => {
     const [featuredServices, setFeaturedServices] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/services/featured-services')
-        .then((res) => {
-            console.log(res.data)
-            setFeaturedServices(res.data)
-        })
+        axios.get('https://service-sphere-server.vercel.app/services/featured-services')
+            .then((res) => {
+                setFeaturedServices(res.data)
+            })
     }, [])
 
 

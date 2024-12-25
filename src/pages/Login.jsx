@@ -18,7 +18,6 @@ const Login = () => {
 
         loginUser(email, password)
             .then((result) => {
-                console.log(result.user)
                 Swal.fire({
                     position: "center",
                     icon: "success",
@@ -30,7 +29,6 @@ const Login = () => {
                 navigate('/')
             })
             .catch((err) => {
-                console.log(err)
                 Swal.fire({
                     position: "center",
                     icon: "error",
@@ -44,7 +42,6 @@ const Login = () => {
     const handleGoogleSignIn = () => {
         signInWithGoogle()
             .then((result) => {
-                console.log(result.user)
                 Swal.fire({
                     position: "center",
                     icon: "success",
@@ -55,7 +52,6 @@ const Login = () => {
                 navigate('/')
             })
             .catch((err) => {
-                console.log(err.massage)
                 Swal.fire({
                     position: "center",
                     icon: "error",

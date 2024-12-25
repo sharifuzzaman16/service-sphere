@@ -10,13 +10,12 @@ const Services = () => {
   const [filteredServices, setFilteredServices] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/services')
+    axios.get('https://service-sphere-server.vercel.app/services')
       .then((res) => {
         setServices(res.data);
         setFilteredServices(res.data);
       })
       .catch((err) => {
-        console.log(err);
       });
   }, []);
 
