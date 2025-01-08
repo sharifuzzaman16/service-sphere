@@ -1,13 +1,3 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-
 # ServiceSphere
 
 ## Project Overview
@@ -44,6 +34,31 @@ The **ServiceSphere** is a full-stack application that enables users to add, man
   - dotenv
   - react-countup
 
+## Screenshots
+### Home Page
+![Home Page](./src/assets/project-screenshots/home.png)
+
+### Services Page
+![Services Page](./src/assets/project-screenshots/services.png)
+
+### Service Details Page
+![Service Details Page](./src/assets/project-screenshots/details.png)
+
+### Add Service Page
+![Add Service Page](./src/assets/project-screenshots/add-service.png)
+
+### My Services Page
+![My Services Page](./src/assets/project-screenshots/my-services.png)
+
+### My Reviews Page
+![My Reviews Page](./src/assets/project-screenshots/my-review.png)
+
+### Registration Page
+![Registration Page](./src/assets/project-screenshots/register.png)
+
+### Login Page
+![Login Page](./src/assets/project-screenshots/login.png)
+
 ## Pages and Functionalities
 ### Navbar
 - **Before Login**: Logo, Home, Services, Login, Register.
@@ -77,7 +92,40 @@ The **ServiceSphere** is a full-stack application that enables users to add, man
 - **Environment Variables**: Secure Firebase and MongoDB credentials.
 - **JWT Authentication**: Protect sensitive API routes.
 
+## Installation & Setup
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd eco-adventure-blog
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Set up environment variables:
+   - Create a `.env` file and add your Firebase keys:
+     ```env
+     REACT_APP_API_KEY=your_api_key
+     REACT_APP_AUTH_DOMAIN=your_auth_domain
+     REACT_APP_PROJECT_ID=your_project_id
+     REACT_APP_STORAGE_BUCKET=your_storage_bucket
+     REACT_APP_MESSAGING_SENDER_ID=your_messaging_sender_id
+     REACT_APP_APP_ID=your_app_id
+     ```
+5. Run the development server:
+   ```bash
+   npm start
+   ```
 
+## Author
+Sharifuzzaman Eusuf  
+[Portfolio](https://sharifuzzaman.vercel.app/) | [Linkedin Profile](https://www.linkedin.com/in/sharifuzzaman24/)
+
+---
+Thank you for exploring **Service-Sphere**.
 
 
 
