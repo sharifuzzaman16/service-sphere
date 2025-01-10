@@ -33,7 +33,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className="navbar bg-[#2F3E46] h-[70px] px-[20px]">
+        <div className="navbar bg-[#2C3E50] h-[70px] fixed z-50 px-[20px]">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -54,16 +54,16 @@ const Navbar = () => {
                         user ? <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-[#2F3E46] rounded-lg z-[1] mt-3 w-52 p-2 shadow">
-                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/'}>Home</Link></li>
-                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/services'}>Services</Link></li>
-                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/add-service'}>Add Service</Link></li>
-                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/my-reviews'}>My Reviews</Link></li>
-                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/my-services'}>My Services</Link></li>
+                        <li><Link className='text-white hover:text-[#1E8449]' to={'/'}>Home</Link></li>
+                        <li><Link className='text-white hover:text-[#1E8449]' to={'/services'}>Services</Link></li>
+                        <li><Link className='text-white hover:text-[#1E8449]' to={'/add-service'}>Add Service</Link></li>
+                        <li><Link className='text-white hover:text-[#1E8449]' to={'/my-reviews'}>My Reviews</Link></li>
+                        <li><Link className='text-white hover:text-[#1E8449]' to={'/my-services'}>My Services</Link></li>
                     </ul> : <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-[#2F3E46] rounded-lg z-[1] mt-3 w-52 p-2 shadow">
-                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/'}>Home</Link></li>
-                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/services'}>Services</Link></li>
+                        <li><Link className='text-white hover:text-[#1E8449]' to={'/'}>Home</Link></li>
+                        <li><Link className='text-white hover:text-[#1E8449]' to={'/services'}>Services</Link></li>
                         
                     </ul>
                     }
@@ -75,15 +75,15 @@ const Navbar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 {
-                    user ? <ul className="menu menu-horizontal px-1">
-                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/'}>Home</Link></li>
-                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/services'}>Services</Link></li>
-                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/add-service'}>Add Service</Link></li>
-                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/my-reviews'}>My Reviews</Link></li>
-                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/my-services'}>My Services</Link></li>
+                    user ? <ul className="flex justify-between gap-6">
+                        <li><Link className='text-white hover:text-[#1E8449]' to={'/'}>Home</Link></li>
+                        <li><Link className='text-white hover:text-[#1E8449]' to={'/services'}>Services</Link></li>
+                        <li><Link className='text-white hover:text-[#1E8449]' to={'/add-service'}>Add Service</Link></li>
+                        <li><Link className='text-white hover:text-[#1E8449]' to={'/my-reviews'}>My Reviews</Link></li>
+                        <li><Link className='text-white hover:text-[#1E8449]' to={'/my-services'}>My Services</Link></li>
                     </ul> : <ul className="menu menu-horizontal px-1">
-                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/'}>Home</Link></li>
-                        <li><Link className='text-white font-medium hover:text-[#64B5F6]' to={'/services'}>Services</Link></li>
+                        <li><Link className='text-white hover:text-[#1E8449]' to={'/'}>Home</Link></li>
+                        <li><Link className='text-white hover:text-[#1E8449]' to={'/services'}>Services</Link></li>
 
                     </ul>
                 }
@@ -101,11 +101,10 @@ const Navbar = () => {
                         </div>
                         <ul
                             tabIndex={0}
-                            className="menu menu-sm dropdown-content bg-[#2F3E46] rounded-lg z-[1] mt-3 w-52 p-2 shadow">
+                            className="flex flex-col gap-1.5 dropdown-content text-white bg-[#2C3E50] rounded-lg z-[1] mt-3 w-52 p-3 shadow">
                             <li>
                                 <a className="justify-between">
                                     Profile
-                                    <span className="badge">New</span>
                                 </a>
                             </li>
                             <li><a>Settings</a></li>

@@ -20,7 +20,7 @@ const Hero = () => {
     }
 
     return (
-        <Slider {...settings}>
+        <Slider className='absolute top-[70px] mb-40' {...settings}>
             <motion.div
                 variants={bannerVariants}
                 initial="initial"
@@ -29,7 +29,7 @@ const Hero = () => {
                 transition={{ duration: 1 }}
             >
                 <div
-                    className="hero w-full h-[450px] bg-no-repeat bg-center bg-cover"
+                    className="hero w-full h-[500px] bg-no-repeat bg-center bg-cover"
                     style={{
                         backgroundImage: "url(https://images.unsplash.com/photo-1727893141025-35d62b3f4a03?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkwfHxzZXJ2aWNlfGVufDB8MHwwfHx8MA%3D%3D)",
                     }}>
@@ -53,7 +53,7 @@ const Hero = () => {
                 transition={{ duration: 1 }}
             >
                 <div
-                    className="hero w-full h-[450px] bg-no-repeat bg-center bg-cover"
+                    className="hero w-full h-[500px] bg-no-repeat bg-center bg-cover"
                     style={{
                         backgroundImage: "url(https://images.unsplash.com/photo-1519624133901-3420156d01b2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHNlcnZpY2V8ZW58MHwwfDB8fHww)",
                     }}>
@@ -77,7 +77,7 @@ const Hero = () => {
                 transition={{ duration: 1 }}
             >
                 <div
-                    className="hero w-full h-[450px] bg-no-repeat bg-center bg-cover"
+                    className="hero w-full h-[500px] bg-no-repeat bg-center bg-cover"
                     style={{
                         backgroundImage: "url(https://plus.unsplash.com/premium_photo-1661632701774-bffbcf314a5b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODF8fHNlcnZpY2V8ZW58MHwwfDB8fHww)",
                     }}>
