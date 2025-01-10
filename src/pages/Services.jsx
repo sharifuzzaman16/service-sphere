@@ -48,13 +48,13 @@ const Services = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto my-16 w-4/5">
+    <div className="max-w-7xl mx-auto min-h-screen py-[100px] w-4/5">
       <Helmet>
         <title>Services - ServiceSphere</title>
       </Helmet>
-      <h1 className="text-2xl text-white text-center font-bold mb-10">Services</h1>
+      <h1 className="text-2xl text-[#2F3640] text-center font-bold mb-10">Services</h1>
       <div className="flex flex-col lg:flex-row gap-6 items-center lg:justify-between">
-        <label className="input input-bordered flex items-center gap-2">
+        <label className="input input-bordered w-[300px] bg-transparent flex items-center gap-2">
           <input
             onChange={handleSearch}
             value={searchQuery}
@@ -79,7 +79,7 @@ const Services = () => {
         <select
           value={selectedCategory}
           onChange={handleCategory}
-          className="select select-bordered"
+          className="select select-bordered bg-transparent w-[300px]"
         >
           <option value="">Search by category</option>
           <option value="technology">Technology and IT</option>
