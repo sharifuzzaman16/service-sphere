@@ -17,40 +17,35 @@ const Testimonials = () => {
         {
             name: "Michael Brown",
             role: "Founder, GreenTech",
-            quote: "We've seen a huge boost in efficiency and performance after using this tool. It's essential for our business.",
+            quote: "We've seen a huge boost in efficiency after using this tool. It's essential for our business.",
+        },
+        {
+            name: "Alex Brown",
+            role: "Founder, GreenTech",
+            quote: "We've seen a huge boost in performance after using this tool. It's essential for our business.",
         },
     ];
 
-    
-    const testimonialVariants = {
-        hidden: { opacity: 0, x: -50 },
-        visible: { opacity: 1, x: 0 },
-    };
 
     return (
         <div className="pt-16">
             <div className="container mx-auto text-center">
-                <h2 className="text-3xl font-semibold text-white mb-8">What Our Clients Say</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <h2 className="text-3xl font-semibold text-[#2F3640] mb-20">What Our Clients Say</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10">
                     {testimonials.map((testimonial, index) => (
-                        <motion.div
+                        <div
                             key={index}
-                            className="bg-[#2F3E46] p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
-                            variants={testimonialVariants}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, amount: 0.2 }} 
-                            transition={{ duration: 1, delay: index * 0.2 }}
-                            whileHover={{
-                                scale: 1.05,
-                                boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)", 
-                                transition: { duration: 0.3 }
-                            }}
+                            className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl relative transition-shadow duration-300"
                         >
-                            <p className="text-lg italic text-gray-300 mb-4">"{testimonial.quote}"</p>
-                            <h3 className="text-xl font-semibold text-white">{testimonial.name}</h3>
-                            <p className="text-gray-400">{testimonial.role}</p>
-                        </motion.div>
+                            <div className="avatar absolute -top-6 -left-6">
+                                <div className="ring-[#1E8449] ring-offset-[#E9F7EF] w-24 rounded-full ring ring-offset-2">
+                                    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                </div>
+                            </div>
+                            <h3 className="text-xl font-semibold mt-4 text-[#2F3640]">{testimonial.name}</h3>
+                            <p className="text-gray-600">{testimonial.role}</p>
+                            <p className="text-lg italic text-gray-500 mt-4">"{testimonial.quote}"</p>
+                        </div>
                     ))}
                 </div>
             </div>
