@@ -46,28 +46,28 @@ const StatsSection = () => {
 
   return (
     <div
-      className="stats-section bg-[#2F3E46] py-10 mt-16 rounded-lg"
+      className="stats-section bg-[#ffffff] py-10 mt-16 rounded-lg"
       ref={statsRef}
     >
-      <h2 className="text-3xl text-white font-bold text-center mb-8">Platform Stats</h2>
+      <h2 className="text-3xl text-[#2F3640] font-bold text-center mb-8">Platform Stats</h2>
       <div className="flex justify-center gap-8">
         <div className="stat-item text-center">
           <h3 className="text-5xl font-bold text-blue-600">
             {isVisible ? <CountUp end={totalUsers} duration={2} /> : totalUsers}
           </h3>
-          <p className="text-lg text-gray-300">Total Users</p>
+          <p className="text-lg text-[#2F3640]">Total Users</p>
         </div>
         <div className="stat-item text-center">
           <h3 className="text-5xl font-bold text-green-600">
             {isVisible ? <CountUp end={totalReviews} duration={2} /> : totalReviews}
           </h3>
-          <p className="text-lg text-gray-300">Total Reviews</p>
+          <p className="text-lg text-[#2F3640]">Total Reviews</p>
         </div>
         <div className="stat-item text-center">
           <h3 className="text-5xl font-bold text-purple-600">
             {isVisible ? <CountUp end={totalServices} duration={2} /> : totalServices}
           </h3>
-          <p className="text-lg text-gray-300">Total Services</p>
+          <p className="text-lg text-[#2F3640]">Total Services</p>
         </div>
       </div>
     </div>

@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom';
 
 const MainLayout = () => {
     return (
-        <div className='bg-[#F7F9F9]'>
+        <div className='bg-[#E9F7EF]'>
             <header>
                 <Navbar></Navbar>
             </header>

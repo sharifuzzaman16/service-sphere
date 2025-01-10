@@ -13,7 +13,7 @@ const Home = () => {
             <Helmet>
                 <title>Home - ServiceSphere</title>
             </Helmet>
-            <section>
+            <section className='w-[95%] mx-auto'>
                 <Hero></Hero>
             </section>
             <section className='w-4/5 mx-auto'>

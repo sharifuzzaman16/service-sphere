@@ -20,7 +20,7 @@ const Hero = () => {
     };
 
     return (
-        <Slider className='relative top-[70px] mb-40' {...settings}>
+        <Slider className='relative top-[100px] mb-40' {...settings}>
             {["https://images.unsplash.com/photo-1727893141025-35d62b3f4a03?w=500&auto=format&fit=crop&q=60",
               "https://images.unsplash.com/photo-1519624133901-3420156d01b2?w=500&auto=format&fit=crop&q=60",
               "https://plus.unsplash.com/premium_photo-1661632701774-bffbcf314a5b?w=500&auto=format&fit=crop&q=60"].map((image, index) => (
@@ -33,7 +33,7 @@ const Hero = () => {
                     transition={{ duration: 1 }}
                 >
                     <div
-                        className="hero w-full h-[500px] relative bg-no-repeat bg-center bg-cover"
+                        className="hero rounded-lg w-full h-[500px] relative bg-no-repeat bg-center bg-cover"
                         style={{
                             backgroundImage: `linear-gradient(to bottom, rgba(44, 62, 80, 0.5), rgba(0, 0, 0, 0.5)), url(${image})`,
                         }}>
