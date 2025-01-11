@@ -162,7 +162,7 @@ const MyReviews = () => {
 
             {isModalOpen && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-                    <div className="bg-[#2F3E46] p-6 rounded-md shadow-md w-full max-w-[700px]">
+                    <div className="bg-white p-6 rounded-md mt-16 shadow-md w-full max-w-[700px]">
                         <h2 className="text-xl text-center text-white font-bold mb-4">Update Review</h2>
                         <div>
                             <label className="block text-sm font-medium text-gray-600 mb-2">Service Title</label>
@@ -196,13 +196,13 @@ const MyReviews = () => {
                         <div className="mt-4 ">
                             <button
                                 onClick={handleUpdateReview}
-                                className="bg-blue-500 text-white w-full py-3 rounded-md"
+                                className="bg-[#1E8449] shadow-lg text-white w-full py-3 rounded-md hover:bg-[#F39C12]"
                             >
                                 Update Review
                             </button>
                             <button
                                 onClick={closeModal}
-                                className="bg-gray-500 mt-4 w-full text-white px-4 py-3 rounded-md"
+                                className="bg-gray-500 mt-4 w-full text-white px-4 py-3 rounded-md shadow-lg"
                             >
                                 Close
                             </button>

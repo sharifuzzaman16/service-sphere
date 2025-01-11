@@ -186,9 +186,9 @@ const UpdateServiceModal = ({ service, onClose, onUpdate }) => {
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-            <div className="bg-[#2F3E46] rounded-md shadow-md w-full max-w-[700px] max-h-[90vh] overflow-y-auto">
+            <div className="bg-white mt-16 rounded-md shadow-md w-full max-w-[700px] h-[75vh] overflow-y-auto">
                 <div className="p-6">
-                    <h2 className="text-xl text-white text-center font-bold mb-4">Edit Service</h2>
+                    <h2 className="text-xl text-[#2F3640] text-center font-bold mb-4">Edit Service</h2>
                     <form onSubmit={handleSubmit} className="space-y-4">
                         <div>
                             <label className="block text-sm font-medium mb-2">Service Image</label>
@@ -289,14 +289,14 @@ const UpdateServiceModal = ({ service, onClose, onUpdate }) => {
                         </div>
                         <button
                             type="submit"
-                            className="bg-blue-600 w-full text-white px-4 py-3 rounded-md hover:bg-blue-700"
+                            className="bg-[#1E8449] shadow-lg w-full text-white px-4 py-3 rounded-md hover:bg-[#F39C12]"
                         >
                             Update Service
                         </button>
                     </form>
                     <button
                         onClick={onClose}
-                        className="bg-gray-500 mt-4 text-white px-4 py-3 rounded-md w-full"
+                        className="bg-gray-500 shadow-lg mt-4 text-white px-4 py-3 rounded-md w-full"
                     >
                         Close
                     </button>
