@@ -1,15 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../assets/logo.png'
+import { AuthContext } from '../context/AuthProvider';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
+
+    const { user } = useContext(AuthContext);
+
     return (
-        <footer className="footer footer-center bg-[#1C1C1C] text-primary-content p-10">
-            <nav className="grid grid-flow-col gap-4">
-                <a className="link link-hover text-[#64B5F6]">About us</a>
-                <a className="link link-hover text-[#64B5F6]">Contact</a>
-                <a className="link link-hover text-[#64B5F6]">Jobs</a>
-                <a className="link link-hover text-[#64B5F6]">Press kit</a>
-            </nav>
+        <footer className="footer footer-center bg-[#2C3E50] text-primary-content p-10">
+            {
+                user ? <nav className="grid grid-flow-col gap-4">
+                    <Link to={'/'} className="link link-hover text-[#1E8449] hover:text-[#F39C12]">Home</Link>
+                    <Link to={'/services'} className="link link-hover text-[#1E8449] hover:text-[#F39C12]">Services</Link>
+                    <Link to={'/add-service'} className="link link-hover text-[#1E8449] hover:text-[#F39C12]">Add Services</Link>
+                    <Link to={'my-services'} className="link link-hover text-[#1E8449] hover:text-[#F39C12]">My Services</Link>
+                    <Link to={'my-reviews'} className="link link-hover text-[#1E8449] hover:text-[#F39C12]">My Reviews</Link>
+                </nav> : <nav className="grid grid-flow-col gap-4">
+                    <Link to={'/'} className="link link-hover text-[#1E8449] hover:text-[#F39C12]">Home</Link>
+                    <Link to={'/services'} className="link link-hover text-[#1E8449] hover:text-[#F39C12]">Services</Link>
+                    <Link to={'/login'} className="link link-hover text-[#1E8449] hover:text-[#F39C12]">Login</Link>
+                    <Link to={'register'} className="link link-hover text-[#1E8449] hover:text-[#F39C12]">Register</Link>
+                </nav>
+            }
             <nav>
                 <div className="grid grid-flow-col gap-4">
                     <a className='text-[#E0E0E0]'>
