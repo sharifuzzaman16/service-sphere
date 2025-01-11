@@ -120,13 +120,13 @@ const MyReviews = () => {
     };
 
     return (
-        <div className="max-w-5xl mx-auto my-16">
+        <div className="max-w-5xl mx-auto min-h-screen py-32">
             <Helmet>
                 <title>My Reviews - ServiceSphere</title>
             </Helmet>
-            <h1 className="text-2xl font-bold mb-6 text-white text-center">My Reviews</h1>
+            <h1 className="text-4xl font-bold mb-10 text-[#2F3640] text-center">My Reviews</h1>
             {reviews.length === 0 ? (
-                <div className="text-center text-white">
+                <div className="text-center text-[#2F3640]">
                     <p>You have no reviews yet.</p>
                 </div>
             ) : (
@@ -134,12 +134,12 @@ const MyReviews = () => {
                     {reviews.map((review) => (
                         <div
                             key={review._id}
-                            className="bg-[#2F3E46] shadow-md p-4 rounded-md flex justify-between items-start"
+                            className="bg-white shadow-md p-4 rounded-md flex justify-between items-start"
                         >
                             <div>
-                                <h3 className="text-lg text-white font-bold">{review.serviceTitle}</h3>
-                                <p className="text-gray-300">{review.reviewText}</p>
-                                <p className="text-yellow-500">{'★'.repeat(review.rating)}</p>
+                                <h3 className="text-lg text-[#2F3640] font-bold">{review.serviceTitle}</h3>
+                                <p className="text-gray-600">{review.reviewText}</p>
+                                <p className="text-yellow-500 text-2xl">{'★'.repeat(review.rating)}</p>
                             </div>
                             <div className="flex gap-2 flex-wrap items-center justify-center">
                                 <button
@@ -165,7 +165,7 @@ const MyReviews = () => {
                     <div className="bg-[#2F3E46] p-6 rounded-md shadow-md w-full max-w-[700px]">
                         <h2 className="text-xl text-center text-white font-bold mb-4">Update Review</h2>
                         <div>
-                            <label className="block text-sm font-medium text-gray-300 mb-2">Service Title</label>
+                            <label className="block text-sm font-medium text-gray-600 mb-2">Service Title</label>
                             <input
                                 disabled
                                 defaultValue={selectedReview.serviceTitle}
@@ -174,7 +174,7 @@ const MyReviews = () => {
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-gray-300 mb-2">Review Text</label>
+                            <label className="block text-sm font-medium text-gray-600 mb-2">Review Text</label>
                             <textarea
                                 className="w-full textarea textarea-bordered"
                                 value={reviewText}
@@ -183,7 +183,7 @@ const MyReviews = () => {
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-gray-300 mb-2">Rating</label>
+                            <label className="block text-sm font-medium text-gray-600 mb-2">Rating</label>
                             <input
                                 type="number"
                                 min="1"
