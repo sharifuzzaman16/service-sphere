@@ -67,12 +67,12 @@ const Login = () => {
             <Helmet>
                 <title>Login - ServiceSphere</title>
             </Helmet>
-            <div className="w-full max-w-sm bg-[#2F3E46] p-6 my-16 rounded-lg shadow-lg">
-                <h2 className="text-2xl text-white font-semibold text-center mb-6">Login</h2>
+            <div className="w-full max-w-sm bg-white p-6 my-16 rounded-lg shadow-lg">
+                <h2 className="text-3xl text-[#2F3640] font-semibold text-center mb-6">Login</h2>
 
                 <form onSubmit={handleLogIn}>
                     <div className="mb-4">
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-100">Email</label>
+                        <label htmlFor="email" className="block text-sm font-medium text-gray-500">Email</label>
                         <input
                             name='email'
                             type="email"
@@ -83,7 +83,7 @@ const Login = () => {
                     </div>
 
                     <div className="mb-4">
-                        <label htmlFor="password" className="block text-sm font-medium text-gray-100">Password</label>
+                        <label htmlFor="password" className="block text-sm font-medium text-gray-500">Password</label>
                         <input
                             name='password'
                             type="password"
@@ -93,9 +93,7 @@ const Login = () => {
                         />
                     </div>
 
-                    <button
-                        className="w-full bg-blue-600 text-white py-2 rounded-lg mb-4"
-                    >
+                    <button className="px-6 py-2 w-full mb-4 rounded-md bg-[#1E8449] text-white font-semibold shadow-lg hover:bg-[#F39C12] transition">
                         Login
                     </button>
                 </form>
@@ -108,7 +106,7 @@ const Login = () => {
                 </button>
 
                 <div className="text-center">
-                    <p className="text-sm text-gray-300">
+                    <p className="text-sm text-gray-400">
                         Don't have an account?{' '}
                         <Link to={'/register'} className="text-blue-600 hover:underline">Register</Link>
                     </p>
