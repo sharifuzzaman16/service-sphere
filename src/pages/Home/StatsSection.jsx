@@ -48,15 +48,15 @@ const StatsSection = () => {
   return (
     <div className="container mx-auto mt-16">
       <h2 className="text-4xl font-semibold text-center text-[#2F3640] mb-10">Platform Stats</h2>
-      <div className='w-full h-[350px] bg-white rounded-lg flex justify-between'>
-        <div className='w-[40%] h-full relative'>
-          <img src={statImg} alt="" className="w-full h-full rounded-l-lg object-cover" />
-          <div class="absolute inset-0 bg-[#E9F7EF] bg-opacity-20 rounded-l-lg"></div>
+      <div className='w-full lg:h-[350px] h-full bg-white rounded-lg flex lg:flex-row flex-col lg:justify-between'>
+        <div className='lg:w-[40%] w-full h-[40%] lg:h-full relative'>
+          <img src={statImg} alt="" className="w-full h-full lg:rounded-tr-none rounded-t-lg lg:rounded-l-lg object-cover" />
+          <div class="absolute inset-0 bg-[#E9F7EF] bg-opacity-20 rounded-t-lg lg:rounded-l-lg"></div>
         </div>
-        <div className='w-[60%] p-10'>
-          <h2 className='text-[#2F3640] text-4xl font-bold '>Discover, Review, and Share Your Experiences</h2>
-          <p className='text-gray-500 text-xl mt-2'>Find trusted services and share your insights with a community that values your voice.</p>
-          <div className="stats shadow bg-none rounded-lg mt-6">
+        <div className='lg:w-[60%] w-full mt-2 lg:p-10 p-4'>
+          <h2 className='text-[#2F3640] text-2xl lg:text-4xl font-bold '>Discover, Review, and Share Your Experiences</h2>
+          <p className='text-gray-500 text-lg lg:text-xl mt-2'>Find trusted services and share your insights with a community that values your voice.</p>
+          <div className="stats grid-flow-row  lg:grid-flow-col bg-none rounded-lg mt-6">
             <div className="stat">
               <div className="stat-figure text-secondary">
                 <svg
@@ -76,7 +76,7 @@ const StatsSection = () => {
               <div className="stat-desc">Jan 1st - Feb 1st</div>
             </div>
 
-            <div className="stat">
+            <div className="stat lg:border-none">
               <div className="stat-figure text-secondary">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +95,7 @@ const StatsSection = () => {
               <div className="stat-desc">↗︎ 400 (22%)</div>
             </div>
 
-            <div className="stat">
+            <div className="stat border-none">
               <div className="stat-figure text-secondary">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
