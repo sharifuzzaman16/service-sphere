@@ -94,12 +94,12 @@ const MyServices = () => {
     };
 
     return (
-        <div className="max-w-7xl mx-auto my-16">
+        <div className="max-w-7xl mx-auto py-32 min-h-screen">
             <Helmet>
                 <title>My Services - ServiceSphere</title>
             </Helmet>
             <div className="flex items-center justify-center flex-col mb-6">
-                <h1 className="text-2xl text-white font-bold mb-6">My Services</h1>
+                <h1 className="text-4xl text-[#2F3640] font-bold mb-6">My Services</h1>
                 <label className="input input-bordered w-full max-w-xs flex items-center gap-2">
                     <input
                         onChange={handleSearch}
@@ -112,12 +112,12 @@ const MyServices = () => {
             </div>
             <table className="w-full text-left border-collapse">
                 <thead>
-                    <tr className="bg-[#2F3E46]">
-                        <th className="p-4">Image</th>
-                        <th className="p-4">Title</th>
-                        <th className="p-4">Category</th>
-                        <th className="p-4">Price</th>
-                        <th className="p-4">Actions</th>
+                    <tr className="bg-white">
+                        <th className="p-4 text-[#2F3640]">Image</th>
+                        <th className="p-4 text-[#2F3640]">Title</th>
+                        <th className="p-4 text-[#2F3640]">Category</th>
+                        <th className="p-4 text-[#2F3640]">Price</th>
+                        <th className="p-4 text-[#2F3640] text-center">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
