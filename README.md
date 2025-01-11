@@ -53,12 +53,6 @@ The **ServiceSphere** is a full-stack application that enables users to add, man
 ### My Reviews Page
 ![My Reviews Page](./src/assets/project-screenshots/my-review.png)
 
-### Registration Page
-![Registration Page](./src/assets/project-screenshots/register.png)
-
-### Login Page
-![Login Page](./src/assets/project-screenshots/login.png)
-
 ## Pages and Functionalities
 ### Navbar
 - **Before Login**: Logo, Home, Services, Login, Register.
