@@ -72,18 +72,18 @@ const ServiceDetails = () => {
 
 
     return (
-        <div className="max-w-5xl mx-auto my-16">
+        <div className="max-w-5xl mx-auto py-32">
             <Helmet>
                 <title>{service ? service.serviceTitle : "Loading..."} - ServiceSphere</title>
             </Helmet>
-            <div className="bg-[#2F3E46] shadow-md rounded-md p-6">
+            <div className="bg-white shadow-md rounded-md p-6">
                 <img
                     src={service.serviceImage}
                     alt={service.serviceTitle}
                     className="w-full h-64 object-cover rounded-md"
                 />
-                <h1 className="text-2xl text-white font-bold mt-4">{service.serviceTitle}</h1>
-                <p className="text-gray-300 mt-2">{service.description}</p>
+                <h1 className="text-2xl text-[#2F3640] font-bold mt-4">{service.serviceTitle}</h1>
+                <p className="text-gray-500 mt-2">{service.description}</p>
                 <p className="mt-2">
                     <strong>Category:</strong> {service.category}
                 </p>
@@ -101,26 +101,26 @@ const ServiceDetails = () => {
             </div>
 
             <div className="mt-8">
-                <h2 className="text-xl text-white font-bold mb-4">
+                <h2 className="text-xl text-[#2F3640] font-bold mb-4">
                     Reviews ({reviews.length})
                 </h2>
                 <div className="space-y-4">
                     {reviews.map((review) => (
-                        <div key={review._id} className="bg-[#2F3E46] p-4 rounded-md shadow-sm">
+                        <div key={review._id} className="bg-white p-4 rounded-md shadow-sm">
                             <div className="flex items-center space-x-4">
                                 <img
                                     src={review.userPhoto}
                                     alt={review.userName}
                                     className="w-10 h-10 rounded-full"
                                 />
-                                <p className="font-bold text-white">{review.userName}</p>
+                                <p className="font-bold text-[#2F3640]">{review.userName}</p>
                             </div>
                             <p className="mt-2">{review.reviewText}</p>
                             <div className="flex items-center mt-2">
-                                <span className="text-yellow-500">
+                                <span className="text-yellow-500 text-2xl">
                                     {'★'.repeat(review.rating)}
                                 </span>
-                                <span className="ml-2 text-sm text-gray-200">
+                                <span className="ml-2 text-sm text-gray-500">
                                     {review.date}
                                 </span>
                             </div>
@@ -129,7 +129,7 @@ const ServiceDetails = () => {
                 </div>
             </div>
 
-            <div className="mt-8 bg-[#2F3E46] p-6 shadow-md rounded-md">
+            <div className="mt-8 bg-white p-6 shadow-md rounded-md">
                 <h3 className="text-lg font-bold mb-4">Add Your Review</h3>
                 <form onSubmit={handleReviewSubmit} className="space-y-4">
                     <textarea required name='review' className="textarea textarea-bordered w-full" placeholder="Write your review"></textarea>
@@ -145,7 +145,7 @@ const ServiceDetails = () => {
                         />
                     </div>
                     <button
-                        className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+                        className="bg-[#1E8449] text-white px-4 py-2 rounded-md hover:bg-[#F39C12]"
                     >
                         Submit Review
                     </button>
