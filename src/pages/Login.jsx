@@ -67,7 +67,7 @@ const Login = () => {
             <Helmet>
                 <title>Login - ServiceSphere</title>
             </Helmet>
-            <div className="w-full max-w-sm bg-white p-6 my-16 rounded-lg shadow-lg">
+            <div className="w-full max-w-sm bg-white p-6 my-32 rounded-lg shadow-lg">
                 <h2 className="text-3xl text-[#2F3640] font-semibold text-center mb-6">Login</h2>
 
                 <form onSubmit={handleLogIn}>
@@ -100,7 +100,7 @@ const Login = () => {
 
                 <button
                     onClick={handleGoogleSignIn}
-                    className="w-full bg-red-600 text-white py-2 rounded-lg mb-4 flex items-center justify-center gap-2"
+                    className="w-full bg-red-600 text-white py-2 rounded-md shadow-lg mb-4 flex items-center justify-center gap-2"
                 >
                     <FcGoogle className='text-2xl'></FcGoogle> Login with Google
                 </button>
@@ -108,7 +108,7 @@ const Login = () => {
                 <div className="text-center">
                     <p className="text-sm text-gray-400">
                         Don't have an account?{' '}
-                        <Link to={'/register'} className="text-blue-600 hover:underline">Register</Link>
+                        <Link to={'/register'} className="text-[#1E8449] hover:underline hover:text-[#F39C12]">Register</Link>
                     </p>
                 </div>
             </div>

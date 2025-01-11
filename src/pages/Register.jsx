@@ -99,12 +99,12 @@ const Register = () => {
             <Helmet>
                 <title>Register - ServiceSphere</title>
             </Helmet>
-            <div className="w-full max-w-sm bg-[#2F3E46] my-16 p-6 rounded-lg shadow-lg">
-                <h2 className="text-2xl text-white font-semibold text-center mb-6">Register</h2>
+            <div className="w-full max-w-sm bg-white my-32 p-6 rounded-lg shadow-lg">
+                <h2 className="text-3xl text-[#2F3640] font-semibold text-center mb-6">Register</h2>
 
                 <form onSubmit={handleRegister}>
                     <div className="mb-4">
-                        <label htmlFor="name" className="block text-sm font-medium text-gray-100">Name</label>
+                        <label htmlFor="name" className="block text-sm font-medium text-gray-500">Name</label>
                         <input
                             name='name'
                             type="text"
@@ -114,7 +114,7 @@ const Register = () => {
                         />
                     </div>
                     <div className="mb-4">
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-100">Email</label>
+                        <label htmlFor="email" className="block text-sm font-medium text-gray-500">Email</label>
                         <input
                             name='email'
                             type="email"
@@ -124,7 +124,7 @@ const Register = () => {
                         />
                     </div>
                     <div className="mb-4">
-                        <label htmlFor="photo" className="block text-sm font-medium text-gray-100">Photo URL</label>
+                        <label htmlFor="photo" className="block text-sm font-medium text-gray-500">Photo URL</label>
                         <input
                             name='photo'
                             type="url"
@@ -135,7 +135,7 @@ const Register = () => {
                     </div>
 
                     <div className="mb-4">
-                        <label htmlFor="password" className="block text-sm font-medium text-gray-100">Password</label>
+                        <label htmlFor="password" className="block text-sm font-medium text-gray-500">Password</label>
                         <input
                             name='password'
                             type="password"
@@ -145,24 +145,22 @@ const Register = () => {
                         />
                     </div>
 
-                    <button
-                        className="w-full bg-blue-600 text-white py-2 rounded-lg mb-4"
-                    >
-                        Register
-                    </button>
+                    <button className="px-6 py-2 w-full rounded-md bg-[#1E8449] text-white font-semibold shadow-lg mb-4 hover:bg-[#F39C12] transition">
+                                Get Started
+                            </button>
                 </form>
 
                 <button
                     onClick={handleGoogleSignIn}
-                    className="w-full bg-red-600 text-white py-2 rounded-lg mb-4 flex items-center justify-center gap-2"
+                    className="w-full bg-red-600 text-white py-2 rounded-md mb-4 flex items-center justify-center gap-2 shadow-lg"
                 >
                     <FcGoogle className='text-2xl'></FcGoogle> Register with Google
                 </button>
 
                 <div className="text-center">
-                    <p className="text-sm text-gray-300">
+                    <p className="text-sm text-gray-400">
                         Already have an account?{' '}
-                        <Link to={'/login'} className="text-blue-600 hover:underline">Login</Link>
+                        <Link to={'/login'} className="text-[#1E8449] hover:underline hover:text-[#F39C12]">Login</Link>
                     </p>
                 </div>
             </div>
