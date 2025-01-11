@@ -111,7 +111,7 @@ const Navbar = () => {
                             <li><a onClick={handleLogout}>Logout</a></li>
                         </ul>
                     </div> : <div className='flex gap-4 items-center'>
-                        <Link to={'/login'} className="bg-[#007BFF] text-white px-4 py-2 rounded cursor-pointer">Login</Link>
+                        <Link to={'/login'} className="bg-[#1E8449] text-white px-4 py-2 hover:bg-[#F39C12]  rounded-lg cursor-pointer">Login</Link>
                         <Link to={'/register'} className="bg-gray-300 text-[#007BFF] px-4 py-2 rounded cursor-pointer">Register</Link>
                     </div>
                 }
