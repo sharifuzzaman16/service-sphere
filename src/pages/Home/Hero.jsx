@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
     const settings = {
@@ -44,9 +45,9 @@ const Hero = () => {
                             <p className="mb-5 text-xl text-gray-200 leading-relaxed">
                                 Find trusted services and share your insights with a community that values your voice.
                             </p>
-                            <button className="px-6 py-3 rounded-md bg-[#1E8449] text-white font-semibold shadow-lg hover:bg-[#F39C12] transition">
+                            <Link to={'/services'} className="px-6 py-3 rounded-md bg-[#1E8449] text-white font-semibold shadow-lg hover:bg-[#F39C12] transition">
                                 Get Started
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </motion.div>
