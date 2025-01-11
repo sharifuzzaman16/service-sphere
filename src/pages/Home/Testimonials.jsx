@@ -30,7 +30,7 @@ const Testimonials = () => {
     return (
         <div className="pt-16">
             <div className="container mx-auto text-center">
-                <h2 className="text-3xl font-semibold text-[#2F3640] mb-20">What Our Clients Say</h2>
+                <h2 className="text-4xl font-semibold text-[#2F3640] mb-20">What Our Clients Say</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10">
                     {testimonials.map((testimonial, index) => (
                         <div

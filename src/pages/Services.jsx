@@ -52,7 +52,7 @@ const Services = () => {
       <Helmet>
         <title>Services - ServiceSphere</title>
       </Helmet>
-      <h1 className="text-2xl text-[#2F3640] text-center font-bold mb-10">Services</h1>
+      <h1 className="text-4xl text-[#2F3640] text-center font-bold mb-10">Services</h1>
       <div className="flex flex-col lg:flex-row gap-6 items-center lg:justify-between">
         <label className="input input-bordered w-[300px] bg-transparent flex items-center gap-2">
           <input

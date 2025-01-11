@@ -49,7 +49,7 @@ const StatsSection = () => {
       className="stats-section bg-[#ffffff] py-10 mt-16 rounded-lg"
       ref={statsRef}
     >
-      <h2 className="text-3xl text-[#2F3640] font-bold text-center mb-8">Platform Stats</h2>
+      <h2 className="text-4xl text-[#2F3640] font-bold text-center mb-8">Platform Stats</h2>
       <div className="flex justify-center gap-8">
         <div className="stat-item text-center">
           <h3 className="text-5xl font-bold text-blue-600">

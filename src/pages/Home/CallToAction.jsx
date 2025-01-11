@@ -5,7 +5,7 @@ const CallToAction = () => {
     return (
         <div className="py-16 my-16 bg-white rounded-lg text-[#2F3640] text-center">
             <div className="container mx-auto">
-                <h2 className="text-3xl font-semibold mb-4">
+                <h2 className="text-4xl font-semibold mb-4">
                     Ready to Get Started?
                 </h2>
                 <p className="text-lg text-gray-600 max-w-[600px] mx-auto mb-6">

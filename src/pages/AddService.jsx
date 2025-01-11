@@ -88,7 +88,7 @@ const AddService = () => {
                 <Helmet>
                     <title>Add Service - ServiceSphere</title>
                 </Helmet>
-                <h1 className="text-2xl font-bold text-[#2F3640] text-center mb-6">Add a New Service</h1>
+                <h1 className="text-4xl font-bold text-[#2F3640] text-center mb-6">Add a New Service</h1>
                 <form onSubmit={handleAddService} className="space-y-4">
                     <div>
                         <label className="block text-sm font-medium text-gray-600 mb-2">Service Image</label>

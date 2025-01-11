@@ -18,7 +18,7 @@ const MeetOurPartners = () => {
     return (
         <div className="pt-16">
             <div className="container mx-auto text-center">
-                <h2 className="text-3xl font-semibold text-[#2F3640] mb-8">Meet Our Partners</h2>
+                <h2 className="text-4xl font-semibold text-[#2F3640] mb-8">Meet Our Partners</h2>
 
 
                 <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-8">
